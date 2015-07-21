@@ -16,7 +16,9 @@ public class Library
 
     public String printBooks()
     {
-        String str = "";
+        String str = "Book List:\n"
+                + String.format("%-35s %-35s %s", "Title", "Author", "Year") + "\n"
+                + "----------------------------------------------------------------------------\n";
 
         for (Book b : books)
         {
