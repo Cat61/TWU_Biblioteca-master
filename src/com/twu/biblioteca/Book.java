@@ -8,12 +8,32 @@ public class Book
     private String title;
     private String author;
     private String year;
+    private boolean available;
 
     public Book(String titleArg, String authorArg, String yearArg)
     {
         title = titleArg;
         author = authorArg;
         year = yearArg;
+        available = true;
+    }
+
+    public boolean checkout()
+    {
+        if(available)
+        {
+            available = false;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public boolean isAvailable()
+    {
+        return available;
     }
 
     @Override
