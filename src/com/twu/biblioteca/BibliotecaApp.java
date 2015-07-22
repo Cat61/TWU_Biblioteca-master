@@ -1,6 +1,11 @@
 package com.twu.biblioteca;
 
+import org.junit.After;
+import org.junit.Before;
+
+import java.io.ByteArrayOutputStream;
 import java.io.Console;
+import java.io.PrintStream;
 
 public class BibliotecaApp
 {
@@ -8,12 +13,20 @@ public class BibliotecaApp
 
     public static void main(String[] args)
     {
-        System.out.println(welcome());
+        welcome();
 
-        library = new Library();
+        initialiseLibrary();
 
         mainLoop();
 
+    }
+
+    protected static void initialiseLibrary()
+    {
+        if(library == null)
+        {
+            library = new Library();
+        }
     }
 
     private static void mainLoop()
@@ -22,7 +35,7 @@ public class BibliotecaApp
 
         while (cont)
         {
-            System.out.println(printMenuOptions());
+            printMenuOptions();
 
             Console console = System.console();
             String input = console.readLine();
@@ -31,7 +44,7 @@ public class BibliotecaApp
         }
     }
 
-    private static boolean selectMenuOption(String input)
+    protected static boolean selectMenuOption(String input)
     {
         System.out.println();
 
@@ -58,15 +71,15 @@ public class BibliotecaApp
         return true;
     }
 
-    private static String printMenuOptions()
+    protected static void printMenuOptions()
     {
-        return "Menu Options:\n" +
+        System.out.println("Menu Options:\n" +
                 "\tList Books: enter \"l\"\n" +
-                "\tQuit: enter \"q\"";
+                "\tQuit: enter \"q\"");
     }
 
-    protected static String welcome()
+    protected static void welcome()
     {
-        return "Welcome!";
+        System.out.println("Welcome!");
     }
 }
