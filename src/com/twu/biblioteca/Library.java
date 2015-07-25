@@ -26,7 +26,7 @@ public class Library
         }
 
         boolean success = availableBooks.get(index).checkout();
-        
+
         if(success)
         {
             availableBooks.remove(index);
