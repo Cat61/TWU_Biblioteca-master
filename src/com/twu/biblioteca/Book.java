@@ -1,8 +1,5 @@
 package com.twu.biblioteca;
 
-/**
- * Created by Catherine on 21/07/2015.
- */
 public class Book
 {
     private String title;

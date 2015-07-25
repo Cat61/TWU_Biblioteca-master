@@ -1,11 +1,6 @@
 package com.twu.biblioteca;
 
-import org.junit.After;
-import org.junit.Before;
-
-import java.io.ByteArrayOutputStream;
 import java.io.Console;
-import java.io.PrintStream;
 
 public class BibliotecaApp
 {

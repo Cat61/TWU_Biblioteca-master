@@ -3,9 +3,6 @@ package com.twu.biblioteca;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Catherine on 21/07/2015.
- */
 public class Generate
 {
     public static List<Book> listOfBooks()

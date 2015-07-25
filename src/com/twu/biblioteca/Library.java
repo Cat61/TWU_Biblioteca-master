@@ -1,12 +1,8 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by Catherine on 21/07/2015.
- */
 public class Library
 {
     private List<Book> books;
@@ -37,12 +33,7 @@ public class Library
 
     public boolean isAvailable(int index)
     {
-        if(isInvalidIndex(index))
-        {
-            return false;
-        }
-
-        return books.get(index).isAvailable();
+        return !isInvalidIndex(index) && books.get(index).isAvailable();
     }
 
     private boolean isInvalidIndex(int index)
