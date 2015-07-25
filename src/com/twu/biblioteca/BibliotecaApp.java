@@ -108,14 +108,19 @@ public class BibliotecaApp
         }
         catch (NumberFormatException ex)
         {
-            System.out.println("Not a valid index of a book!");
+            System.out.println("Not a valid index of a book!\n");
             return;
         }
 
         boolean success = library.checkout(index - 1);
-        if(!success)
+
+        if (success)
         {
-            System.out.println("Unsuccessful checkout!");
+            System.out.println("Thank you! Enjoy the book.\n");
+        }
+        else
+        {
+            System.out.println("Unsuccessful checkout!\n");
         }
     }
 }
