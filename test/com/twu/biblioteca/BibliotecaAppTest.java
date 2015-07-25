@@ -235,7 +235,7 @@ public class BibliotecaAppTest
     }
 
     @Test
-    public void testUnsuccessfulReturnAndList()
+    public void testMisspeltReturnAndListBooks()
     {
         BibliotecaApp.initialiseOrResetLibrary();
 
@@ -247,6 +247,72 @@ public class BibliotecaAppTest
 
         outContent.reset();
         BibliotecaApp.returnBook("Java All-in-One For Dummie");
+
+        expected = "\nThat is not a valid book to return.\n\n";
+        actual = getTerminalOutput();
+        assertEquals(expected, actual);
+
+        outContent.reset();
+        BibliotecaApp.selectMenuOption("l");
+
+        expected = "\nBook List:\n" +
+                "   Title                               Author                              Year\n" +
+                "-------------------------------------------------------------------------------\n" +
+                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
+                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
+                "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
+                "(4)Effective Java                      Joshua Bloch                        2001\n" +
+                "(5)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n\n";
+        actual = getTerminalOutput();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testReturnAvailableBookAndListBooks()
+    {
+        BibliotecaApp.initialiseOrResetLibrary();
+
+        BibliotecaApp.checkoutBook("5");
+
+        String expected = "\nThank you! Enjoy the book.\n\n";
+        String actual = getTerminalOutput();
+        assertEquals(expected, actual);
+
+        outContent.reset();
+        BibliotecaApp.returnBook("Effective Java");
+
+        expected = "\nThat is not a valid book to return.\n\n";
+        actual = getTerminalOutput();
+        assertEquals(expected, actual);
+
+        outContent.reset();
+        BibliotecaApp.selectMenuOption("l");
+
+        expected = "\nBook List:\n" +
+                "   Title                               Author                              Year\n" +
+                "-------------------------------------------------------------------------------\n" +
+                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
+                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
+                "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
+                "(4)Effective Java                      Joshua Bloch                        2001\n" +
+                "(5)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n\n";
+        actual = getTerminalOutput();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testInvalidReturnAndListBooks()
+    {
+        BibliotecaApp.initialiseOrResetLibrary();
+
+        BibliotecaApp.checkoutBook("5");
+
+        String expected = "\nThank you! Enjoy the book.\n\n";
+        String actual = getTerminalOutput();
+        assertEquals(expected, actual);
+
+        outContent.reset();
+        BibliotecaApp.returnBook("&");
 
         expected = "\nThat is not a valid book to return.\n\n";
         actual = getTerminalOutput();
