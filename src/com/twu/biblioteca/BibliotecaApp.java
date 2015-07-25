@@ -84,7 +84,7 @@ public class BibliotecaApp
         return true;
     }
 
-    protected static void printMenuOptions()
+    private static void checkout()
     {
         System.out.println(library.printAvailableBooks());
 
