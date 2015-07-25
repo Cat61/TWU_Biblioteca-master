@@ -50,6 +50,19 @@ public class Library
         return index < 0 || index >= availableBooks.size();
     }
 
+    public void returnBook(String title)
+    {
+        for (Book b : books)
+        {
+            if(!b.isAvailable() && b.equalsTitle(title))
+            {
+                b.returnBook();
+                availableBooks.add(b);
+                return;
+            }
+        }
+    }
+
     public String printAllBooks()
     {
         String str = "Book List:\n"

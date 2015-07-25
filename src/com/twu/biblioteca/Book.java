@@ -36,6 +36,19 @@ public class Book
         return available;
     }
 
+    public boolean equalsTitle(String t)
+    {
+        return title.equals(t);
+    }
+
+    public void returnBook()
+    {
+        if(!available)
+        {
+            available = true;
+        }
+    }
+
     @Override
     public String toString()
     {

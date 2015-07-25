@@ -120,7 +120,12 @@ public class BibliotecaApp
         }
         else
         {
-            System.out.println("Unsuccessful checkout!\n");
+            System.out.println("That book is not available!\n");
         }
+    }
+
+    public static void returnBook(String input)
+    {
+        library.returnBook("Head First Java");
     }
 }

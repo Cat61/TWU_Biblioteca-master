@@ -87,7 +87,7 @@ public class BibliotecaAppTest
 
         BibliotecaApp.checkoutBook("8");
 
-        String expected = "\nUnsuccessful checkout!\n\n";
+        String expected = "\nThat book is not available!\n\n";
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
 
@@ -163,6 +163,35 @@ public class BibliotecaAppTest
 
         String expected = "\nThank you! Enjoy the book.\n\n";
         String actual = getTerminalOutput();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testSelectMenuOptionR()
+    {
+        BibliotecaApp.initialiseOrResetLibrary();
+
+        BibliotecaApp.checkoutBook("1");
+
+        String expected = "\nThank you! Enjoy the book.\n\n";
+        String actual = getTerminalOutput();
+        assertEquals(expected, actual);
+
+        outContent.reset();
+        BibliotecaApp.returnBook("Head First Java");
+
+        BibliotecaApp.selectMenuOption("l");
+
+        expected = "\nBook List:\n" +
+                "   Title                               Author                              Year\n" +
+                "-------------------------------------------------------------------------------\n" +
+                "(1)Hadoop: The Definitive Guide        Tom White                           2009\n" +
+                "(2)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
+                "(3)Effective Java                      Joshua Bloch                        2001\n" +
+                "(4)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
+                "(5)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
+                "(6)Head First Java                     Kathy Sierra, Bert Bates            2005\n\n";
+        actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
 
