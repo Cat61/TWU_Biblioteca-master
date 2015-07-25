@@ -167,7 +167,7 @@ public class BibliotecaAppTest
     }
 
     @Test
-    public void testSelectMenuOptionR()
+    public void testSelectMenuOptionR1()
     {
         BibliotecaApp.initialiseOrResetLibrary();
 
@@ -191,6 +191,35 @@ public class BibliotecaAppTest
                 "(4)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
                 "(5)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
                 "(6)Head First Java                     Kathy Sierra, Bert Bates            2005\n\n";
+        actual = getTerminalOutput();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testSelectMenuOptionR2()
+    {
+        BibliotecaApp.initialiseOrResetLibrary();
+
+        BibliotecaApp.checkoutBook("5");
+
+        String expected = "\nThank you! Enjoy the book.\n\n";
+        String actual = getTerminalOutput();
+        assertEquals(expected, actual);
+
+        outContent.reset();
+        BibliotecaApp.returnBook("Java All-in-One For Dummies");
+
+        BibliotecaApp.selectMenuOption("l");
+
+        expected = "\nBook List:\n" +
+                "   Title                               Author                              Year\n" +
+                "-------------------------------------------------------------------------------\n" +
+                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
+                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
+                "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
+                "(4)Effective Java                      Joshua Bloch                        2001\n" +
+                "(5)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
+                "(6)Java All-in-One For Dummies         Doug Lowe                           2014\n\n";
         actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
