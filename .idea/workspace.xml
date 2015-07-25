@@ -7,10 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c357747f-ca84-4f55-86ae-9b5c6d71510a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaApp.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaApp.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/BibliotecaAppTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/BibliotecaAppTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/Book.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/Book.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/Library.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/Library.java" />
     </list>
     <ignored path="biblioteca.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -61,10 +58,25 @@
       <file leaf-file-name="BibliotecaAppTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/BibliotecaAppTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5595855" vertical-offset="4034" max-vertical-offset="4794">
-              <caret line="250" column="22" selection-start-line="250" selection-start-column="22" selection-end-line="250" selection-end-column="22" />
+            <state vertical-scroll-proportion="2.9507773" vertical-offset="0" max-vertical-offset="1326">
+              <caret line="238" column="4" selection-start-line="238" selection-start-column="4" selection-end-line="238" selection-end-column="4" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="method#setUp#0;class#BibliotecaAppTest#0" expanded="false" />
+                <element signature="method#cleanUp#0;class#BibliotecaAppTest#0" expanded="false" />
+                <element signature="method#testWelcome#0;class#BibliotecaAppTest#0" expanded="false" />
+                <element signature="method#testListAvailableBooks#0;class#BibliotecaAppTest#0" expanded="false" />
+                <element signature="method#testCheckout#0;class#BibliotecaAppTest#0" expanded="false" />
+                <element signature="method#testCheckoutAndListBooks#0;class#BibliotecaAppTest#0" expanded="false" />
+                <element signature="method#testFailedCheckoutAndListBooks#0;class#BibliotecaAppTest#0" expanded="false" />
+                <element signature="method#testQuit#0;class#BibliotecaAppTest#0" expanded="false" />
+                <element signature="method#testInvalidSelectMenuOptionWithChar#0;class#BibliotecaAppTest#0" expanded="false" />
+                <element signature="method#testInvalidSelectMenuOptionWithCorrectCharButMore#0;class#BibliotecaAppTest#0" expanded="false" />
+                <element signature="method#testInvalidSelectMenuOptionWithWord#0;class#BibliotecaAppTest#0" expanded="false" />
+                <element signature="method#testPrintMenuOptions#0;class#BibliotecaAppTest#0" expanded="false" />
+                <element signature="method#testReturnFirstBookAndListBooks#0;class#BibliotecaAppTest#0" expanded="false" />
+                <element signature="method#testReturnFifthBookAndListBooks#0;class#BibliotecaAppTest#0" expanded="false" />
+                <element signature="method#testUnsuccessfulReturnAndList#0;class#BibliotecaAppTest#0" expanded="false" />
+                <element signature="method#getTerminalOutput#0;class#BibliotecaAppTest#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -661,12 +673,12 @@
       <updated>1437513453001</updated>
       <workItem from="1437513453852" duration="16776000" />
       <workItem from="1437841406439" duration="6754000" />
-      <workItem from="1437851423660" duration="956000" />
+      <workItem from="1437851423660" duration="1411000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24486000" />
+    <option name="totallyTimeSpent" value="24941000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
@@ -751,7 +763,22 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3570">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#setUp#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#cleanUp#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testWelcome#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testListAvailableBooks#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testCheckout#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testCheckoutAndListBooks#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testFailedCheckoutAndListBooks#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testQuit#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testInvalidSelectMenuOptionWithChar#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testInvalidSelectMenuOptionWithCorrectCharButMore#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testInvalidSelectMenuOptionWithWord#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testPrintMenuOptions#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testReturnFirstBookAndListBooks#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testReturnFifthBookAndListBooks#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testUnsuccessfulReturnAndList#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#getTerminalOutput#0;class#BibliotecaAppTest#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -830,7 +857,22 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2635">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#setUp#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#cleanUp#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testWelcome#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testListAvailableBooks#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testCheckout#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testCheckoutAndListBooks#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testFailedCheckoutAndListBooks#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testQuit#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testInvalidSelectMenuOptionWithChar#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testInvalidSelectMenuOptionWithCorrectCharButMore#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testInvalidSelectMenuOptionWithWord#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testPrintMenuOptions#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testReturnFirstBookAndListBooks#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testReturnFifthBookAndListBooks#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testUnsuccessfulReturnAndList#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#getTerminalOutput#0;class#BibliotecaAppTest#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -902,10 +944,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/BibliotecaAppTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5595855" vertical-offset="4034" max-vertical-offset="4794">
-          <caret line="250" column="22" selection-start-line="250" selection-start-column="22" selection-end-line="250" selection-end-column="22" />
+        <state vertical-scroll-proportion="2.9507773" vertical-offset="0" max-vertical-offset="1326">
+          <caret line="238" column="4" selection-start-line="238" selection-start-column="4" selection-end-line="238" selection-end-column="4" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#setUp#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#cleanUp#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testWelcome#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testListAvailableBooks#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testCheckout#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testCheckoutAndListBooks#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testFailedCheckoutAndListBooks#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testQuit#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testInvalidSelectMenuOptionWithChar#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testInvalidSelectMenuOptionWithCorrectCharButMore#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testInvalidSelectMenuOptionWithWord#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testPrintMenuOptions#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testReturnFirstBookAndListBooks#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testReturnFifthBookAndListBooks#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#testUnsuccessfulReturnAndList#0;class#BibliotecaAppTest#0" expanded="false" />
+            <element signature="method#getTerminalOutput#0;class#BibliotecaAppTest#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -37,7 +37,7 @@ public class BibliotecaAppTest
     }
 
     @Test
-    public void testSelectMenuOptionL()
+    public void testListAvailableBooks()
     {
         BibliotecaApp.initialiseOrResetLibrary();
 
@@ -56,7 +56,19 @@ public class BibliotecaAppTest
     }
 
     @Test
-    public void testSelectMenuOptionCL()
+    public void testCheckout()
+    {
+        BibliotecaApp.initialiseOrResetLibrary();
+
+        BibliotecaApp.checkoutBook("4");
+
+        String expected = "\nThank you! Enjoy the book.\n\n";
+        String actual = getTerminalOutput();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testCheckoutAndListBooks()
     {
         BibliotecaApp.initialiseOrResetLibrary();
 
@@ -81,7 +93,7 @@ public class BibliotecaAppTest
     }
 
     @Test
-    public void testSelectMenuOptionCLInvalid()
+    public void testFailedCheckoutAndListBooks()
     {
         BibliotecaApp.initialiseOrResetLibrary();
 
@@ -107,7 +119,7 @@ public class BibliotecaAppTest
     }
 
     @Test
-    public void testSelectMenuOptionQ()
+    public void testQuit()
     {
         String expected = "\nQuit!\n";
         BibliotecaApp.selectMenuOption("q");
@@ -116,7 +128,7 @@ public class BibliotecaAppTest
     }
 
     @Test
-    public void testSelectMenuOptionInvalid1()
+    public void testInvalidSelectMenuOptionWithChar()
     {
         String expected = "\nSelect a valid option!\n";
         BibliotecaApp.selectMenuOption("p");
@@ -125,7 +137,7 @@ public class BibliotecaAppTest
     }
 
     @Test
-    public void testSelectMenuOptionInvalid2()
+    public void testInvalidSelectMenuOptionWithCorrectCharButMore()
     {
         String expected = "\nSelect a valid option!\n";
         BibliotecaApp.selectMenuOption("l hh");
@@ -134,7 +146,7 @@ public class BibliotecaAppTest
     }
 
     @Test
-    public void testSelectMenuOptionInvalid3()
+    public void testInvalidSelectMenuOptionWithWord()
     {
         String expected = "\nSelect a valid option!\n";
         BibliotecaApp.selectMenuOption("line");
@@ -155,19 +167,7 @@ public class BibliotecaAppTest
     }
 
     @Test
-    public void testSelectMenuOptionC()
-    {
-        BibliotecaApp.initialiseOrResetLibrary();
-
-        BibliotecaApp.checkoutBook("4");
-
-        String expected = "\nThank you! Enjoy the book.\n\n";
-        String actual = getTerminalOutput();
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testSelectMenuOptionR()
+    public void testReturnFirstBookAndListBooks()
     {
         BibliotecaApp.initialiseOrResetLibrary();
 
@@ -201,7 +201,7 @@ public class BibliotecaAppTest
     }
 
     @Test
-    public void testSelectMenuOptionR2()
+    public void testReturnFifthBookAndListBooks()
     {
         BibliotecaApp.initialiseOrResetLibrary();
 
@@ -235,7 +235,7 @@ public class BibliotecaAppTest
     }
 
     @Test
-    public void testSelectMenuOptionRUnsuccessful()
+    public void testUnsuccessfulReturnAndList()
     {
         BibliotecaApp.initialiseOrResetLibrary();
 
