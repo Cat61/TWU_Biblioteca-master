@@ -145,6 +145,18 @@ public class BibliotecaAppTest
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void testSelectMenuOptionC()
+    {
+        BibliotecaApp.initialiseOrResetLibrary();
+
+        BibliotecaApp.checkoutBook("4");
+
+        String expected = "\nThank you! Enjoy the book.\n\n";
+        String actual = getTerminalOutput();
+        assertEquals(expected, actual);
+    }
+
     private String getTerminalOutput()
     {
         String text = outContent.toString();
