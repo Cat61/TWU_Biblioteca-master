@@ -17,7 +17,7 @@ public class LibraryTest
     }
 
     @Test
-    public void testPrintBooks()
+    public void testPrintAllBooks()
     {
         String expected =
                 "Book List:\n" +
@@ -30,7 +30,25 @@ public class LibraryTest
                 "Java All-in-One For Dummies         Doug Lowe                           2014\n" +
                 "Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n";
 
-        String actual = library.printBooks();
+        String actual = library.printAllBooks();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testPrintAvailableBooks()
+    {
+        String expected =
+                "Book List:\n" +
+                        "   Title                               Author                              Year\n" +
+                        "-------------------------------------------------------------------------------\n" +
+                        "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
+                        "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
+                        "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
+                        "(4)Effective Java                      Joshua Bloch                        2001\n" +
+                        "(5)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
+                        "(6)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n";
+
+        String actual = library.printAvailableBooks();
         assertEquals(expected, actual);
     }
 
@@ -63,9 +81,6 @@ public class LibraryTest
     {
         boolean success = library.checkout(2);
         assertTrue(success);
-
-        success = library.checkout(2);
-        assertFalse(success);
 
         boolean available = library.isAvailable(2);
         assertFalse(available);

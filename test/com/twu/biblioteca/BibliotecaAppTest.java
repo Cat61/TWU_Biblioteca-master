@@ -3,11 +3,10 @@ package com.twu.biblioteca;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-
-import static org.junit.Assert.assertEquals;
 
 public class BibliotecaAppTest
 {
@@ -31,64 +30,106 @@ public class BibliotecaAppTest
     @Test
     public void testWelcome()
     {
-        String expected = "Welcome!";
+        String expected = "Welcome!\n";
         BibliotecaApp.welcome();
-        String actual = outContent.toString().trim();
+        String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
 
     @Test
     public void testSelectMenuOptionL()
     {
-        BibliotecaApp.initialiseLibrary();
+        BibliotecaApp.initialiseOrResetLibrary();
 
-        String expected = "Book List:\n" +
-                "Title                               Author                              Year\n" +
-                "----------------------------------------------------------------------------\n" +
-                "Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
-                "Hadoop: The Definitive Guide        Tom White                           2009\n" +
-                "Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
-                "Effective Java                      Joshua Bloch                        2001\n" +
-                "Java All-in-One For Dummies         Doug Lowe                           2014\n" +
-                "Learning Java                       Patrick Niemeyer, Daniel Leuck      2013";
+        String expected = "\nBook List:\n" +
+                "   Title                               Author                              Year\n" +
+                "-------------------------------------------------------------------------------\n" +
+                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
+                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
+                "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
+                "(4)Effective Java                      Joshua Bloch                        2001\n" +
+                "(5)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
+                "(6)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n\n";
         BibliotecaApp.selectMenuOption("l");
-        String actual = outContent.toString().trim();
+        String actual = getTerminalOutput();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testSelectMenuOptionCL()
+    {
+        BibliotecaApp.initialiseOrResetLibrary();
+
+        BibliotecaApp.checkoutBook("3");
+
+        String expected = "\n\nBook List:\n" +
+                "   Title                               Author                              Year\n" +
+                "-------------------------------------------------------------------------------\n" +
+                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
+                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
+                "(3)Effective Java                      Joshua Bloch                        2001\n" +
+                "(4)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
+                "(5)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n\n";
+        BibliotecaApp.selectMenuOption("l");
+        String actual = getTerminalOutput();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testSelectMenuOptionCLInvalid()
+    {
+        BibliotecaApp.initialiseOrResetLibrary();
+
+        BibliotecaApp.checkoutBook("8");
+
+        String expected = "\nUnsuccessful checkout!\n\n" +
+                "Book List:\n" +
+                "   Title                               Author                              Year\n" +
+                "-------------------------------------------------------------------------------\n" +
+                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
+                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
+                "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
+                "(4)Effective Java                      Joshua Bloch                        2001\n" +
+                "(5)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
+                "(6)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n\n";
+        BibliotecaApp.selectMenuOption("l");
+        String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
 
     @Test
     public void testSelectMenuOptionQ()
     {
-        String expected = "Quit!";
+        String expected = "\nQuit!\n";
         BibliotecaApp.selectMenuOption("q");
-        String actual = outContent.toString().trim();
+        String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
 
     @Test
     public void testSelectMenuOptionInvalid1()
     {
-        String expected = "Select a valid option!";
+        String expected = "\nSelect a valid option!\n";
         BibliotecaApp.selectMenuOption("p");
-        String actual = outContent.toString().trim();
+        String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
 
     @Test
     public void testSelectMenuOptionInvalid2()
     {
-        String expected = "Select a valid option!";
+        String expected = "\nSelect a valid option!\n";
         BibliotecaApp.selectMenuOption("l hh");
-        String actual = outContent.toString().trim();
+        String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
 
     @Test
     public void testSelectMenuOptionInvalid3()
     {
-        String expected = "Select a valid option!";
+        String expected = "\nSelect a valid option!\n";
         BibliotecaApp.selectMenuOption("line");
-        String actual = outContent.toString().trim();
+        String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
 
@@ -97,9 +138,17 @@ public class BibliotecaAppTest
     {
         String expected = "Menu Options:\n" +
                 "\tList Books: enter \"l\"\n" +
-                "\tQuit: enter \"q\"";
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tQuit: enter \"q\"\n";
         BibliotecaApp.printMenuOptions();
-        String actual = outContent.toString().trim();
+        String actual = getTerminalOutput();
         assertEquals(expected, actual);
+    }
+
+    private String getTerminalOutput()
+    {
+        String text = outContent.toString();
+        text = text.replaceAll("\r\n", "\n");
+        return text;
     }
 }

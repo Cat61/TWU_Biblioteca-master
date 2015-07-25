@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -8,10 +10,12 @@ import java.util.List;
 public class Library
 {
     private List<Book> books;
+    private List<Book> availableBooks;
 
     public Library()
     {
         books = Generate.listOfBooks();
+        availableBooks = new ArrayList<Book>(books);
     }
 
     public boolean checkout(int index)
@@ -21,7 +25,14 @@ public class Library
             return false;
         }
 
-        return books.get(index).checkout();
+        boolean success = availableBooks.get(index).checkout();
+        
+        if(success)
+        {
+            availableBooks.remove(index);
+        }
+
+        return success;
     }
 
     public boolean isAvailable(int index)
@@ -36,10 +47,10 @@ public class Library
 
     private boolean isInvalidIndex(int index)
     {
-        return index < 0 || index >= books.size();
+        return index < 0 || index >= availableBooks.size();
     }
 
-    public String printBooks()
+    public String printAllBooks()
     {
         String str = "Book List:\n"
                 + String.format("%-35s %-35s %s", "Title", "Author", "Year") + "\n"
@@ -48,6 +59,21 @@ public class Library
         for (Book b : books)
         {
             str += b.toString() + "\n";
+        }
+
+        return str;
+    }
+
+    public String printAvailableBooks()
+    {
+        String str = "Book List:\n"
+                + String.format("   %-35s %-35s %s", "Title", "Author", "Year") + "\n"
+                + "-------------------------------------------------------------------------------\n";
+
+        for (int i = 0; i < availableBooks.size(); i++)
+        {
+            Book b = availableBooks.get(i);
+            str += "(" + (i+1) + ")" + b.toString() + "\n";
         }
 
         return str;

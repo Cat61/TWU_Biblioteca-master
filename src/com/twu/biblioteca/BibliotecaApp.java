@@ -15,18 +15,20 @@ public class BibliotecaApp
     {
         welcome();
 
-        initialiseLibrary();
+        initialiseOrResetLibrary();
 
         mainLoop();
 
     }
 
-    protected static void initialiseLibrary()
+    static void welcome()
     {
-        if(library == null)
-        {
-            library = new Library();
-        }
+        System.out.println("Welcome!");
+    }
+
+    static void initialiseOrResetLibrary()
+    {
+        library = new Library();
     }
 
     private static void mainLoop()
@@ -44,7 +46,15 @@ public class BibliotecaApp
         }
     }
 
-    protected static boolean selectMenuOption(String input)
+    static void printMenuOptions()
+    {
+        System.out.println("Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tQuit: enter \"q\"");
+    }
+
+    static boolean selectMenuOption(String input)
     {
         System.out.println();
 
@@ -59,7 +69,10 @@ public class BibliotecaApp
         switch (c)
         {
             case 'l':
-                System.out.println(library.printBooks());
+                System.out.println(library.printAvailableBooks());
+                break;
+            case 'c':
+                checkout();
                 break;
             case 'q':
                 System.out.println("Quit!");
@@ -73,13 +86,36 @@ public class BibliotecaApp
 
     protected static void printMenuOptions()
     {
-        System.out.println("Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tQuit: enter \"q\"");
+        System.out.println(library.printAvailableBooks());
+
+        System.out.println("Select book to checkout: enter index");
+
+        Console console = System.console();
+        String input = console.readLine();
+
+        checkoutBook(input);
     }
 
-    protected static void welcome()
+    static void checkoutBook(String input)
     {
-        System.out.println("Welcome!");
+        System.out.println();
+
+        int index;
+
+        try
+        {
+            index = Integer.parseInt(input);
+        }
+        catch (NumberFormatException ex)
+        {
+            System.out.println("Not a valid index of a book!");
+            return;
+        }
+
+        boolean success = library.checkout(index - 1);
+        if(!success)
+        {
+            System.out.println("Unsuccessful checkout!");
+        }
     }
 }
