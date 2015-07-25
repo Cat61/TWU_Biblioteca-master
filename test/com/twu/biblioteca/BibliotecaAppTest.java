@@ -160,6 +160,7 @@ public class BibliotecaAppTest
         String expected = "Menu Options:\n" +
                 "\tList Books: enter \"l\"\n" +
                 "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
                 "\tQuit: enter \"q\"\n";
         BibliotecaApp.printMenuOptions();
         String actual = getTerminalOutput();

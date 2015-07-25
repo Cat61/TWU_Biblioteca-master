@@ -51,6 +51,7 @@ public class BibliotecaApp
         System.out.println("Menu Options:\n" +
                 "\tList Books: enter \"l\"\n" +
                 "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
                 "\tQuit: enter \"q\"");
     }
 
@@ -72,7 +73,10 @@ public class BibliotecaApp
                 System.out.println(library.printAvailableBooks());
                 break;
             case 'c':
-                checkout();
+                checkoutOption();
+                break;
+            case 'r':
+                returnOption();
                 break;
             case 'q':
                 System.out.println("Quit!");
@@ -84,7 +88,7 @@ public class BibliotecaApp
         return true;
     }
 
-    private static void checkout()
+    private static void checkoutOption()
     {
         System.out.println(library.printAvailableBooks());
 
@@ -124,7 +128,17 @@ public class BibliotecaApp
         }
     }
 
-    public static void returnBook(String input)
+    private static void returnOption()
+    {
+        System.out.println("Enter title of the book you are returning:");
+
+        Console console = System.console();
+        String input = console.readLine();
+
+        returnBook(input);
+    }
+
+    static void returnBook(String input)
     {
         System.out.println();
 
