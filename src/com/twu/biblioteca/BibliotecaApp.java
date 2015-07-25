@@ -126,6 +126,10 @@ public class BibliotecaApp
 
     public static void returnBook(String input)
     {
+        System.out.println();
+        
         library.returnBook(input);
+
+        System.out.println("Thank you for returning the book.\n");
     }
 }
