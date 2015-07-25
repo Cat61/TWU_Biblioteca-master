@@ -41,11 +41,16 @@ public class Book
         return title.equals(t);
     }
 
-    public void returnBook()
+    public boolean returnBook()
     {
-        if(!available)
+        if(available)
+        {
+            return false;
+        }
+        else
         {
             available = true;
+            return true;
         }
     }
 

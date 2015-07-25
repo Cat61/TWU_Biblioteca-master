@@ -246,9 +246,9 @@ public class BibliotecaAppTest
         assertEquals(expected, actual);
 
         outContent.reset();
-        BibliotecaApp.returnBook("Java All-in-One For Dummies");
+        BibliotecaApp.returnBook("Java All-in-One For Dummie");
 
-        expected = "";
+        expected = "\n";
         actual = getTerminalOutput();
         assertEquals(expected, actual);
 

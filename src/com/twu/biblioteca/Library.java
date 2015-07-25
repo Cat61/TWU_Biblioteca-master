@@ -50,7 +50,7 @@ public class Library
         return index < 0 || index >= availableBooks.size();
     }
 
-    public void returnBook(String title)
+    public boolean returnBook(String title)
     {
         for (Book b : books)
         {
@@ -58,9 +58,10 @@ public class Library
             {
                 b.returnBook();
                 availableBooks.add(b);
-                return;
+                return true;
             }
         }
+        return false;
     }
 
     public String printAllBooks()

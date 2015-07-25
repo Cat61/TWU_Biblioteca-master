@@ -128,8 +128,11 @@ public class BibliotecaApp
     {
         System.out.println();
 
-        library.returnBook(input);
+        boolean success = library.returnBook(input);
 
-        System.out.println("Thank you for returning the book.\n");
+        if(success)
+        {
+            System.out.println("Thank you for returning the book.\n");
+        }
     }
 }
