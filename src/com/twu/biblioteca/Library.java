@@ -8,10 +8,14 @@ public class Library
     private List<Book> books;
     private List<Book> availableBooks;
 
+    private List<Movie> availableMovies;
+
     public Library()
     {
         books = Generate.listOfBooks();
         availableBooks = new ArrayList<Book>(books);
+
+        availableMovies = Generate.listOfMovies();
     }
 
     public boolean checkout(int index)
@@ -79,6 +83,21 @@ public class Library
         {
             Book b = availableBooks.get(i);
             str += "(" + (i+1) + ")" + b.toString() + "\n";
+        }
+
+        return str;
+    }
+
+    public String printAvailableMovies()
+    {
+        String str = "Movie List:\n"
+                + String.format("   %-19s %-19s %-19s %s", "Title", "Year", "Director", "Rating") + "\n"
+                + "---------------------------------------------------------------------\n";
+
+        for (int i = 0; i < availableMovies.size(); i++)
+        {
+            Movie m = availableMovies.get(i);
+            str += "(" + (i+1) + ")" + m.toString() + "\n";
         }
 
         return str;

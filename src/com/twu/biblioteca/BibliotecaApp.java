@@ -61,9 +61,10 @@ public class BibliotecaApp
     private static void printMenuOptions()
     {
         out.println("Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
+                "\tList Books: enter \"b\"\n" +
                 "\tCheckout Book: enter \"c\"\n" +
                 "\tReturn Book: enter \"r\"\n" +
+                "\tList Movies: enter \"m\"\n" +
                 "\tQuit: enter \"q\"");
     }
 
@@ -81,7 +82,7 @@ public class BibliotecaApp
 
         switch (c)
         {
-            case 'l':
+            case 'b':
                 out.println(library.printAvailableBooks());
                 break;
             case 'c':
@@ -89,6 +90,9 @@ public class BibliotecaApp
                 break;
             case 'r':
                 returnOption();
+                break;
+            case 'm':
+                out.println(library.printAvailableMovies());
                 break;
             case 'q':
                 out.println("Quit!");

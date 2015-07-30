@@ -16,4 +16,15 @@ public class Generate
         books.add(new Book("Learning Java", "Patrick Niemeyer, Daniel Leuck", "2013"));
         return books;
     }
+
+    public static List<Movie> listOfMovies()
+    {
+        List<Movie> movies = new ArrayList<Movie>();
+        movies.add(new Movie("Casablanca", "1942", "Michael Curtiz", "9"));
+        movies.add(new Movie("The Godfather", "1972", "Francis Coppola", "9"));
+        movies.add(new Movie("Date Movie", "2006", "Aaron Seltzer", "2"));
+        movies.add(new Movie("Avatar", "2009", "James Cameron", "8"));
+        movies.add(new Movie("Iron Man", "2008", "Jon Favreau", "7"));
+        return movies;
+    }
 }
