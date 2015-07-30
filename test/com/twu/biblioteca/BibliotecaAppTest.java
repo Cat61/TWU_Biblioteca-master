@@ -13,14 +13,10 @@ public class BibliotecaAppTest
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @Test
-    public void testListAndQuit()
+    public void testListBooksAndQuit()
     {
         String expected = "Welcome!\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Book List:\n" +
                 "   Title                               Author                              Year\n" +
@@ -32,11 +28,7 @@ public class BibliotecaAppTest
                 "(5)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
                 "(6)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
                 "\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
@@ -49,11 +41,7 @@ public class BibliotecaAppTest
     public void testCheckoutAndQuit()
     {
         String expected = "Welcome!\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Book List:\n" +
                 "   Title                               Author                              Year\n" +
@@ -69,11 +57,7 @@ public class BibliotecaAppTest
                 "\n" +
                 "Thank you! Enjoy the book.\n" +
                 "\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
@@ -86,11 +70,7 @@ public class BibliotecaAppTest
     public void testCheckoutAndListBooks()
     {
         String expected = "Welcome!\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Book List:\n" +
                 "   Title                               Author                              Year\n" +
@@ -106,11 +86,7 @@ public class BibliotecaAppTest
                 "\n" +
                 "Thank you! Enjoy the book.\n" +
                 "\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Book List:\n" +
                 "   Title                               Author                              Year\n" +
@@ -121,11 +97,7 @@ public class BibliotecaAppTest
                 "(4)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
                 "(5)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
                 "\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
@@ -138,11 +110,7 @@ public class BibliotecaAppTest
     public void testFailedCheckoutAndListBooks()
     {
         String expected = "Welcome!\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Book List:\n" +
                 "   Title                               Author                              Year\n" +
@@ -158,11 +126,7 @@ public class BibliotecaAppTest
                 "\n" +
                 "That book is not available!\n" +
                 "\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Book List:\n" +
                 "   Title                               Author                              Year\n" +
@@ -174,11 +138,7 @@ public class BibliotecaAppTest
                 "(5)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
                 "(6)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
                 "\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
@@ -191,18 +151,10 @@ public class BibliotecaAppTest
     public void testInvalidSelectMenuOptionWithChar()
     {
         String expected = "Welcome!\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Select a valid option!\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
@@ -215,18 +167,10 @@ public class BibliotecaAppTest
     public void testInvalidSelectMenuOptionWithCorrectCharButMore()
     {
         String expected = "Welcome!\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Select a valid option!\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
@@ -239,18 +183,10 @@ public class BibliotecaAppTest
     public void testInvalidSelectMenuOptionWithWord()
     {
         String expected = "Welcome!\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Select a valid option!\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
@@ -263,11 +199,7 @@ public class BibliotecaAppTest
     public void testReturnFirstBookAndListBooks()
     {
         String expected = "Welcome!\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Book List:\n" +
                 "   Title                               Author                              Year\n" +
@@ -283,21 +215,13 @@ public class BibliotecaAppTest
                 "\n" +
                 "Thank you! Enjoy the book.\n" +
                 "\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Enter title of the book you are returning:\n" +
                 "\n" +
                 "Thank you for returning the book.\n" +
                 "\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Book List:\n" +
                 "   Title                               Author                              Year\n" +
@@ -309,11 +233,7 @@ public class BibliotecaAppTest
                 "(5)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
                 "(6)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
                 "\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
@@ -326,11 +246,7 @@ public class BibliotecaAppTest
     public void testReturnAvailableBookAndListBooks()
     {
         String expected = "Welcome!\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Book List:\n" +
                 "   Title                               Author                              Year\n" +
@@ -346,21 +262,13 @@ public class BibliotecaAppTest
                 "\n" +
                 "Thank you! Enjoy the book.\n" +
                 "\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Enter title of the book you are returning:\n" +
                 "\n" +
                 "Thank you for returning the book.\n" +
                 "\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Book List:\n" +
                 "   Title                               Author                              Year\n" +
@@ -372,11 +280,7 @@ public class BibliotecaAppTest
                 "(5)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
                 "(6)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
                 "\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
@@ -389,11 +293,7 @@ public class BibliotecaAppTest
     public void testMisspeltReturnAndListBooks()
     {
         String expected = "Welcome!\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Book List:\n" +
                 "   Title                               Author                              Year\n" +
@@ -409,21 +309,13 @@ public class BibliotecaAppTest
                 "\n" +
                 "Thank you! Enjoy the book.\n" +
                 "\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Enter title of the book you are returning:\n" +
                 "\n" +
                 "That is not a valid book to return.\n" +
                 "\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Book List:\n" +
                 "   Title                               Author                              Year\n" +
@@ -434,11 +326,7 @@ public class BibliotecaAppTest
                 "(4)Effective Java                      Joshua Bloch                        2001\n" +
                 "(5)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
                 "\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
@@ -451,11 +339,7 @@ public class BibliotecaAppTest
     public void testInvalidReturnAndListBooks()
     {
         String expected = "Welcome!\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Book List:\n" +
                 "   Title                               Author                              Year\n" +
@@ -471,21 +355,13 @@ public class BibliotecaAppTest
                 "\n" +
                 "Thank you! Enjoy the book.\n" +
                 "\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Enter title of the book you are returning:\n" +
                 "\n" +
                 "That is not a valid book to return.\n" +
                 "\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Book List:\n" +
                 "   Title                               Author                              Year\n" +
@@ -496,15 +372,35 @@ public class BibliotecaAppTest
                 "(4)Effective Java                      Joshua Bloch                        2001\n" +
                 "(5)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
                 "\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"l\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
         BibliotecaApp.program(new ByteArrayInputStream("c\n5\nr\n&\nl\nq\n".getBytes()), new PrintStream(outContent));
+        String actual = getTerminalOutput();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testListMovies()
+    {
+        String expected = "Welcome!\n" +
+                getMenuOptionsString() +
+                "\n" +
+                "Movie List:\n" +
+                "   Title               Year                Director            Rating\n" +
+                "---------------------------------------------------------------------\n" +
+                "(1)Casablanca          1942                Michael Curtiz      9\n" +
+                "(2)The Godfather       1972                Francis Coppola     9\n" +
+                "(3)Date Movie          2006                Aaron Seltzer       2\n" +
+                "(4)Avatar              2009                James Cameron       8\n" +
+                "(5)Iron Man            2008                Jon Favreau         7\n" +
+                "\n" +
+                getMenuOptionsString() +
+                "\n" +
+                "Quit!\n";
+
+        BibliotecaApp.program(new ByteArrayInputStream("m\nq\n".getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -514,5 +410,15 @@ public class BibliotecaAppTest
         String text = outContent.toString();
         text = text.replaceAll("\r\n", "\n");
         return text;
+    }
+
+    private String getMenuOptionsString()
+    {
+        return "Menu Options:\n" +
+                "\tList Books: enter \"b\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tList Movies: enter \"m\"\n" +
+                "\tQuit: enter \"q\"\n";
     }
 }
