@@ -90,7 +90,7 @@ public class BibliotecaApp
                 checkoutOption(Library.Item.book);
                 break;
             case 'r':
-                returnOption();
+                returnBookOption();
                 break;
             case 'm':
                 out.println(library.printTypeList(Library.Item.movie));
@@ -116,11 +116,6 @@ public class BibliotecaApp
 
         String input = getInput();
 
-        checkout(type, input);
-    }
-
-    private static void checkout(Library.Item type, String input)
-    {
         out.println();
 
         int index;
@@ -147,17 +142,12 @@ public class BibliotecaApp
         }
     }
 
-    private static void returnOption()
+    private static void returnBookOption()
     {
         out.println("Enter title of the book you are returning:");
 
         String input = getInput();
 
-        returnBook(input);
-    }
-
-    private static void returnBook(String input)
-    {
         out.println();
 
         boolean success = library.returnBook(input);
