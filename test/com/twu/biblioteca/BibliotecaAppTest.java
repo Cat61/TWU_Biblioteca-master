@@ -315,14 +315,7 @@ public class BibliotecaAppTest
         String expected = "Welcome!\n" +
                 getMenuOptionsString() +
                 "\n" +
-                "Movie List:\n" +
-                "   Title                          Year       Director             Rating\n" +
-                "------------------------------------------------------------------------\n" +
-                "(1)Casablanca                     1942       Michael Curtiz       9\n" +
-                "(2)The Godfather                  1972       Francis Coppola      9\n" +
-                "(3)Date Movie                     2006       Aaron Seltzer        2\n" +
-                "(4)Avatar                         2009       James Cameron        8\n" +
-                "(5)Iron Man                       2008       Jon Favreau          7\n" +
+                getMovieList() +
                 "\n" +
                 getMenuOptionsString() +
                 "\n" +
@@ -339,14 +332,7 @@ public class BibliotecaAppTest
         String expected = "Welcome!\n" +
                 getMenuOptionsString() +
                 "\n" +
-                "Movie List:\n" +
-                "   Title                          Year       Director             Rating\n" +
-                "------------------------------------------------------------------------\n" +
-                "(1)Casablanca                     1942       Michael Curtiz       9\n" +
-                "(2)The Godfather                  1972       Francis Coppola      9\n" +
-                "(3)Date Movie                     2006       Aaron Seltzer        2\n" +
-                "(4)Avatar                         2009       James Cameron        8\n" +
-                "(5)Iron Man                       2008       Jon Favreau          7\n" +
+                getMovieList() +
                 "\n" +
                 "Select movie to checkout: enter index\n" +
                 "\n" +
@@ -365,34 +351,15 @@ public class BibliotecaAppTest
     public void testCheckoutMovieAndListMovies()
     {
         String expected = "Welcome!\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"b\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tList Movies: enter \"m\"\n" +
-                "\tCheckout Movie: enter \"k\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
-                "Movie List:\n" +
-                "   Title                          Year       Director             Rating\n" +
-                "------------------------------------------------------------------------\n" +
-                "(1)Casablanca                     1942       Michael Curtiz       9\n" +
-                "(2)The Godfather                  1972       Francis Coppola      9\n" +
-                "(3)Date Movie                     2006       Aaron Seltzer        2\n" +
-                "(4)Avatar                         2009       James Cameron        8\n" +
-                "(5)Iron Man                       2008       Jon Favreau          7\n" +
+                getMovieList() +
                 "\n" +
                 "Select movie to checkout: enter index\n" +
                 "\n" +
                 "Thank you! Enjoy the movie.\n" +
                 "\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"b\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tList Movies: enter \"m\"\n" +
-                "\tCheckout Movie: enter \"k\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Movie List:\n" +
                 "   Title                          Year       Director             Rating\n" +
@@ -402,17 +369,32 @@ public class BibliotecaAppTest
                 "(3)Avatar                         2009       James Cameron        8\n" +
                 "(4)Iron Man                       2008       Jon Favreau          7\n" +
                 "\n" +
-                "Menu Options:\n" +
-                "\tList Books: enter \"b\"\n" +
-                "\tCheckout Book: enter \"c\"\n" +
-                "\tReturn Book: enter \"r\"\n" +
-                "\tList Movies: enter \"m\"\n" +
-                "\tCheckout Movie: enter \"k\"\n" +
-                "\tQuit: enter \"q\"\n" +
+                getMenuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
         BibliotecaApp.program(new ByteArrayInputStream("k\n2\nm\nq\n".getBytes()), new PrintStream(outContent));
+        String actual = getTerminalOutput();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testFailedCheckoutMovie()
+    {
+        String expected = "Welcome!\n" +
+                getMenuOptionsString() +
+                "\n" +
+                getMovieList() +
+                "\n" +
+                "Select movie to checkout: enter index\n" +
+                "\n" +
+                "That movie is not available!\n" +
+                "\n" +
+                getMenuOptionsString() +
+                "\n" +
+                "Quit!\n";
+
+        BibliotecaApp.program(new ByteArrayInputStream("k\n8\nq\n".getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -446,5 +428,17 @@ public class BibliotecaAppTest
                 "(4)Effective Java                 2001       Joshua Bloch\n" +
                 "(5)Java All-in-One For Dummies    2014       Doug Lowe\n" +
                 "(6)Learning Java                  2013       Patrick Niemeyer, Daniel Leuck\n";
+    }
+
+    private String getMovieList()
+    {
+        return "Movie List:\n" +
+                "   Title                          Year       Director             Rating\n" +
+                "------------------------------------------------------------------------\n" +
+                "(1)Casablanca                     1942       Michael Curtiz       9\n" +
+                "(2)The Godfather                  1972       Francis Coppola      9\n" +
+                "(3)Date Movie                     2006       Aaron Seltzer        2\n" +
+                "(4)Avatar                         2009       James Cameron        8\n" +
+                "(5)Iron Man                       2008       Jon Favreau          7\n";
     }
 }
