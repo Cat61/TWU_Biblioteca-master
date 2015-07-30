@@ -20,14 +20,19 @@ public class Library
         availableMovies = new ArrayList<Movie>(movies);
     }
 
-    public boolean checkoutBook(int index)
-    {
-        return checkout(availableBooks, index);
-    }
+    public enum Item {book, movie}
 
-    private boolean isInvalidIndex(int index, List list)
+    public boolean checkout(Item type, int index)
     {
-        return index < 0 || index >= list.size();
+        switch (type)
+        {
+            case book:
+                return checkout(availableBooks, index);
+            case movie:
+                return checkout(availableMovies, index);
+            default:
+                return false;
+        }
     }
 
     public boolean returnBook(String title)
@@ -44,32 +49,41 @@ public class Library
         return false;
     }
 
-    public boolean checkoutMovie(int index)
-    {
-        return checkout(availableMovies, index);
-    }
-
     public boolean isBookAvailable(int index)
     {
         return books.get(index).isAvailable();
     }
 
-    public String printAvailableBooks()
+    public String printTypeList(Item type)
     {
-        String str = "Book List:\n"
-                + String.format("   %-30s %-10s %s", "Title", "Year", "Author") + "\n"
-                + "-------------------------------------------------------------------------------\n";
-
-        return str + printList(availableBooks);
+        switch (type)
+        {
+            case book:
+                return printBooksHeader() + printList(availableBooks);
+            case movie:
+                return printMovieHeader() + printList(availableMovies);
+            default:
+                return null;
+        }
     }
 
-    public String printAvailableMovies()
+    private boolean isInvalidIndex(int index, List list)
     {
-        String str = "Movie List:\n"
+        return index < 0 || index >= list.size();
+    }
+
+    private String printBooksHeader()
+    {
+        return "Book List:\n"
+                + String.format("   %-30s %-10s %s", "Title", "Year", "Author") + "\n"
+                + "-------------------------------------------------------------------------------\n";
+    }
+
+    private String printMovieHeader()
+    {
+        return  "Movie List:\n"
                 + String.format("   %-30s %-10s %-20s %s", "Title", "Year", "Director", "Rating") + "\n"
                 + "------------------------------------------------------------------------\n";
-
-        return str + printList(availableMovies);
     }
 
     private String printList(List list)

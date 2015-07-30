@@ -84,19 +84,19 @@ public class BibliotecaApp
         switch (c)
         {
             case 'b':
-                out.println(library.printAvailableBooks());
+                out.println(library.printTypeList(Library.Item.book));
                 break;
             case 'c':
-                checkoutBookOption();
+                checkoutOption(Library.Item.book);
                 break;
             case 'r':
                 returnOption();
                 break;
             case 'm':
-                out.println(library.printAvailableMovies());
+                out.println(library.printTypeList(Library.Item.movie));
                 break;
             case 'k':
-                checkoutMovieOption();
+                checkoutOption(Library.Item.movie);
                 break;
             case 'q':
                 out.println("Quit!");
@@ -108,18 +108,18 @@ public class BibliotecaApp
         return true;
     }
 
-    private static void checkoutBookOption()
+    private static void checkoutOption(Library.Item type)
     {
-        out.println(library.printAvailableBooks());
+        out.println(library.printTypeList(type));
 
-        out.println("Select book to checkout: enter index");
+        out.println("Select " + type + " to checkout: enter index");
 
         String input = getInput();
 
-        checkoutBook(input);
+        checkout(type, input);
     }
 
-    private static void checkoutBook(String input)
+    private static void checkout(Library.Item type, String input)
     {
         out.println();
 
@@ -131,19 +131,19 @@ public class BibliotecaApp
         }
         catch (NumberFormatException ex)
         {
-            out.println("Not a valid index of a book!\n");
+            out.println("Not a valid index of a " + type + "!\n");
             return;
         }
 
-        boolean success = library.checkoutBook(index - 1);
+        boolean success = library.checkout(type, index - 1);
 
         if (success)
         {
-            out.println("Thank you! Enjoy the book.\n");
+            out.println("Thank you! Enjoy the " + type + ".\n");
         }
         else
         {
-            out.println("That book is not available!\n");
+            out.println("That " + type + " is not available!\n");
         }
     }
 
@@ -169,45 +169,6 @@ public class BibliotecaApp
         else
         {
             out.println("That is not a valid book to return.\n");
-        }
-    }
-
-    private static void checkoutMovieOption()
-    {
-        out.println(library.printAvailableMovies());
-
-        out.println("Select movie to checkout: enter index");
-
-        String input = getInput();
-
-        checkoutMovie(input);
-    }
-
-    private static void checkoutMovie(String input)
-    {
-        out.println();
-
-        int index;
-
-        try
-        {
-            index = Integer.parseInt(input);
-        }
-        catch (NumberFormatException ex)
-        {
-            out.println("Not a valid index of a movie!\n");
-            return;
-        }
-
-        boolean success = library.checkoutMovie(index - 1);
-
-        if (success)
-        {
-            out.println("Thank you! Enjoy the movie.\n");
-        }
-        else
-        {
-            out.println("That movie is not available!\n");
         }
     }
 

@@ -361,6 +361,62 @@ public class BibliotecaAppTest
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void testCheckoutMovieAndListMovies()
+    {
+        String expected = "Welcome!\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"b\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tList Movies: enter \"m\"\n" +
+                "\tCheckout Movie: enter \"k\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Movie List:\n" +
+                "   Title                          Year       Director             Rating\n" +
+                "------------------------------------------------------------------------\n" +
+                "(1)Casablanca                     1942       Michael Curtiz       9\n" +
+                "(2)The Godfather                  1972       Francis Coppola      9\n" +
+                "(3)Date Movie                     2006       Aaron Seltzer        2\n" +
+                "(4)Avatar                         2009       James Cameron        8\n" +
+                "(5)Iron Man                       2008       Jon Favreau          7\n" +
+                "\n" +
+                "Select movie to checkout: enter index\n" +
+                "\n" +
+                "Thank you! Enjoy the movie.\n" +
+                "\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"b\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tList Movies: enter \"m\"\n" +
+                "\tCheckout Movie: enter \"k\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Movie List:\n" +
+                "   Title                          Year       Director             Rating\n" +
+                "------------------------------------------------------------------------\n" +
+                "(1)Casablanca                     1942       Michael Curtiz       9\n" +
+                "(2)Date Movie                     2006       Aaron Seltzer        2\n" +
+                "(3)Avatar                         2009       James Cameron        8\n" +
+                "(4)Iron Man                       2008       Jon Favreau          7\n" +
+                "\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"b\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tList Movies: enter \"m\"\n" +
+                "\tCheckout Movie: enter \"k\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Quit!\n";
+
+        BibliotecaApp.program(new ByteArrayInputStream("k\n2\nm\nq\n".getBytes()), new PrintStream(outContent));
+        String actual = getTerminalOutput();
+        assertEquals(expected, actual);
+    }
+
     private String getTerminalOutput()
     {
         String text = outContent.toString();

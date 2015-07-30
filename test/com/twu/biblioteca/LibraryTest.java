@@ -30,14 +30,14 @@ public class LibraryTest
                 "(5)Java All-in-One For Dummies    2014       Doug Lowe\n" +
                 "(6)Learning Java                  2013       Patrick Niemeyer, Daniel Leuck\n";
 
-        String actual = library.printAvailableBooks();
+        String actual = library.printTypeList(Library.Item.book);
         assertEquals(expected, actual);
     }
 
     @Test
     public void testCheckout()
     {
-        boolean success = library.checkoutBook(3);
+        boolean success = library.checkout(Library.Item.book, 3);
         assertTrue(success);
 
         boolean available = library.isBookAvailable(3);
@@ -47,21 +47,21 @@ public class LibraryTest
     @Test
     public void testUnsuccessfulCheckoutWithMinus()
     {
-        boolean success = library.checkoutBook(-1);
+        boolean success = library.checkout(Library.Item.book, -1);
         assertFalse(success);
     }
 
     @Test
     public void testUnsuccessfulCheckoutWithOutOfIndex()
     {
-        boolean success = library.checkoutBook(8);
+        boolean success = library.checkout(Library.Item.book, 8);
         assertFalse(success);
     }
 
     @Test
     public void testReturnBook()
     {
-        boolean success = library.checkoutBook(3);
+        boolean success = library.checkout(Library.Item.book, 3);
         assertTrue(success);
 
         success = library.returnBook("Effective Java");
@@ -84,7 +84,7 @@ public class LibraryTest
     @Test
     public void testUnsuccessfulReturnBookWithMisspeltBook()
     {
-        boolean success = library.checkoutBook(3);
+        boolean success = library.checkout(Library.Item.book, 3);
         assertTrue(success);
 
         success = library.returnBook("Effectiv Java");
