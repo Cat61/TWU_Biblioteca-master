@@ -32,7 +32,7 @@ public class BibliotecaAppTest
                 "\n" +
                 "Quit!\n";
 
-        BibliotecaApp.program(new ByteArrayInputStream("l\nq\n".getBytes()), new PrintStream(outContent));
+        BibliotecaApp.program(new ByteArrayInputStream("b\nq\n".getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -101,7 +101,7 @@ public class BibliotecaAppTest
                 "\n" +
                 "Quit!\n";
 
-        BibliotecaApp.program(new ByteArrayInputStream("c\n3\nl\nq\n".getBytes()), new PrintStream(outContent));
+        BibliotecaApp.program(new ByteArrayInputStream("c\n3\nb\nq\n".getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -142,7 +142,7 @@ public class BibliotecaAppTest
                 "\n" +
                 "Quit!\n";
 
-        BibliotecaApp.program(new ByteArrayInputStream("c\n8\nl\nq\n".getBytes()), new PrintStream(outContent));
+        BibliotecaApp.program(new ByteArrayInputStream("c\n8\nb\nq\n".getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -237,7 +237,7 @@ public class BibliotecaAppTest
                 "\n" +
                 "Quit!\n";
 
-        BibliotecaApp.program(new ByteArrayInputStream("c\n1\nr\nHead First Java\nl\nq\n".getBytes()), new PrintStream(outContent));
+        BibliotecaApp.program(new ByteArrayInputStream("c\n1\nr\nHead First Java\nb\nq\n".getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -284,7 +284,7 @@ public class BibliotecaAppTest
                 "\n" +
                 "Quit!\n";
 
-        BibliotecaApp.program(new ByteArrayInputStream("c\n5\nr\nJava All-in-One For Dummies\nl\nq\n".getBytes()), new PrintStream(outContent));
+        BibliotecaApp.program(new ByteArrayInputStream("c\n5\nr\nJava All-in-One For Dummies\nb\nq\n".getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -330,7 +330,7 @@ public class BibliotecaAppTest
                 "\n" +
                 "Quit!\n";
 
-        BibliotecaApp.program(new ByteArrayInputStream("c\n5\nr\nJava All-in-One For Dummie\nl\nq\n".getBytes()), new PrintStream(outContent));
+        BibliotecaApp.program(new ByteArrayInputStream("c\n5\nr\nJava All-in-One For Dummie\nb\nq\n".getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -376,7 +376,7 @@ public class BibliotecaAppTest
                 "\n" +
                 "Quit!\n";
 
-        BibliotecaApp.program(new ByteArrayInputStream("c\n5\nr\n&\nl\nq\n".getBytes()), new PrintStream(outContent));
+        BibliotecaApp.program(new ByteArrayInputStream("c\n5\nr\n&\nb\nq\n".getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
