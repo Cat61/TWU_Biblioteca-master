@@ -1,47 +1,28 @@
 package com.twu.biblioteca;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+
+import static org.junit.Assert.assertEquals;
 
 public class BibliotecaAppTest
 {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-
-    @Before
-    public void setUp()
-    {
-        System.setOut(new PrintStream(outContent));
-        System.setErr(new PrintStream(errContent));
-    }
-
-    @After
-    public void cleanUp()
-    {
-        System.setOut(null);
-        System.setErr(null);
-    }
 
     @Test
-    public void testWelcome()
+    public void testListAndQuit()
     {
-        String expected = "Welcome!\n";
-        BibliotecaApp.welcome();
-        String actual = getTerminalOutput();
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testListAvailableBooks()
-    {
-        BibliotecaApp.initialiseOrResetLibrary();
-
-        String expected = "\nBook List:\n" +
+        String expected = "Welcome!\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Book List:\n" +
                 "   Title                               Author                              Year\n" +
                 "-------------------------------------------------------------------------------\n" +
                 "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
@@ -49,20 +30,54 @@ public class BibliotecaAppTest
                 "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
                 "(4)Effective Java                      Joshua Bloch                        2001\n" +
                 "(5)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
-                "(6)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n\n";
-        BibliotecaApp.selectMenuOption("l");
+                "(6)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
+                "\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Quit!\n";
+
+        BibliotecaApp.program(new ByteArrayInputStream("l\nq\n".getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
 
     @Test
-    public void testCheckout()
+    public void testCheckoutAndQuit()
     {
-        BibliotecaApp.initialiseOrResetLibrary();
+        String expected = "Welcome!\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Book List:\n" +
+                "   Title                               Author                              Year\n" +
+                "-------------------------------------------------------------------------------\n" +
+                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
+                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
+                "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
+                "(4)Effective Java                      Joshua Bloch                        2001\n" +
+                "(5)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
+                "(6)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
+                "\n" +
+                "Select book to checkout: enter index\n" +
+                "\n" +
+                "Thank you! Enjoy the book.\n" +
+                "\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Quit!\n";
 
-        BibliotecaApp.checkoutBook("4");
-
-        String expected = "\nThank you! Enjoy the book.\n\n";
+        BibliotecaApp.program(new ByteArrayInputStream("c\n1\nq\n".getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -70,41 +85,14 @@ public class BibliotecaAppTest
     @Test
     public void testCheckoutAndListBooks()
     {
-        BibliotecaApp.initialiseOrResetLibrary();
-
-        BibliotecaApp.checkoutBook("3");
-
-        String expected = "\nThank you! Enjoy the book.\n\n";
-        String actual = getTerminalOutput();
-        assertEquals(expected, actual);
-
-        outContent.reset();
-        expected = "\nBook List:\n" +
-                "   Title                               Author                              Year\n" +
-                "-------------------------------------------------------------------------------\n" +
-                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
-                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
-                "(3)Effective Java                      Joshua Bloch                        2001\n" +
-                "(4)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
-                "(5)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n\n";
-        BibliotecaApp.selectMenuOption("l");
-        actual = getTerminalOutput();
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testFailedCheckoutAndListBooks()
-    {
-        BibliotecaApp.initialiseOrResetLibrary();
-
-        BibliotecaApp.checkoutBook("8");
-
-        String expected = "\nThat book is not available!\n\n";
-        String actual = getTerminalOutput();
-        assertEquals(expected, actual);
-
-        outContent.reset();
-        expected ="\nBook List:\n" +
+        String expected = "Welcome!\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Book List:\n" +
                 "   Title                               Author                              Year\n" +
                 "-------------------------------------------------------------------------------\n" +
                 "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
@@ -112,17 +100,89 @@ public class BibliotecaAppTest
                 "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
                 "(4)Effective Java                      Joshua Bloch                        2001\n" +
                 "(5)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
-                "(6)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n\n";
-        BibliotecaApp.selectMenuOption("l");
-        actual = getTerminalOutput();
+                "(6)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
+                "\n" +
+                "Select book to checkout: enter index\n" +
+                "\n" +
+                "Thank you! Enjoy the book.\n" +
+                "\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Book List:\n" +
+                "   Title                               Author                              Year\n" +
+                "-------------------------------------------------------------------------------\n" +
+                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
+                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
+                "(3)Effective Java                      Joshua Bloch                        2001\n" +
+                "(4)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
+                "(5)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
+                "\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Quit!\n";
+
+        BibliotecaApp.program(new ByteArrayInputStream("c\n3\nl\nq\n".getBytes()), new PrintStream(outContent));
+        String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
 
     @Test
-    public void testQuit()
+    public void testFailedCheckoutAndListBooks()
     {
-        String expected = "\nQuit!\n";
-        BibliotecaApp.selectMenuOption("q");
+        String expected = "Welcome!\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Book List:\n" +
+                "   Title                               Author                              Year\n" +
+                "-------------------------------------------------------------------------------\n" +
+                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
+                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
+                "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
+                "(4)Effective Java                      Joshua Bloch                        2001\n" +
+                "(5)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
+                "(6)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
+                "\n" +
+                "Select book to checkout: enter index\n" +
+                "\n" +
+                "That book is not available!\n" +
+                "\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Book List:\n" +
+                "   Title                               Author                              Year\n" +
+                "-------------------------------------------------------------------------------\n" +
+                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
+                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
+                "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
+                "(4)Effective Java                      Joshua Bloch                        2001\n" +
+                "(5)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
+                "(6)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
+                "\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Quit!\n";
+
+        BibliotecaApp.program(new ByteArrayInputStream("c\n8\nl\nq\n".getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -130,8 +190,23 @@ public class BibliotecaAppTest
     @Test
     public void testInvalidSelectMenuOptionWithChar()
     {
-        String expected = "\nSelect a valid option!\n";
-        BibliotecaApp.selectMenuOption("p");
+        String expected = "Welcome!\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Select a valid option!\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Quit!\n";
+
+        BibliotecaApp.program(new ByteArrayInputStream("p\nq\n".getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -139,8 +214,23 @@ public class BibliotecaAppTest
     @Test
     public void testInvalidSelectMenuOptionWithCorrectCharButMore()
     {
-        String expected = "\nSelect a valid option!\n";
-        BibliotecaApp.selectMenuOption("l hh");
+        String expected = "Welcome!\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Select a valid option!\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Quit!\n";
+
+        BibliotecaApp.program(new ByteArrayInputStream("l hh\nq\n".getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -148,21 +238,23 @@ public class BibliotecaAppTest
     @Test
     public void testInvalidSelectMenuOptionWithWord()
     {
-        String expected = "\nSelect a valid option!\n";
-        BibliotecaApp.selectMenuOption("line");
-        String actual = getTerminalOutput();
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testPrintMenuOptions()
-    {
-        String expected = "Menu Options:\n" +
+        String expected = "Welcome!\n" +
+                "Menu Options:\n" +
                 "\tList Books: enter \"l\"\n" +
                 "\tCheckout Book: enter \"c\"\n" +
                 "\tReturn Book: enter \"r\"\n" +
-                "\tQuit: enter \"q\"\n";
-        BibliotecaApp.printMenuOptions();
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Select a valid option!\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Quit!\n";
+
+        BibliotecaApp.program(new ByteArrayInputStream("line\nq\n".getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -170,25 +262,44 @@ public class BibliotecaAppTest
     @Test
     public void testReturnFirstBookAndListBooks()
     {
-        BibliotecaApp.initialiseOrResetLibrary();
-
-        BibliotecaApp.checkoutBook("1");
-
-        String expected = "\nThank you! Enjoy the book.\n\n";
-        String actual = getTerminalOutput();
-        assertEquals(expected, actual);
-
-        outContent.reset();
-        BibliotecaApp.returnBook("Head First Java");
-
-        expected = "\nThank you for returning the book.\n\n";
-        actual = getTerminalOutput();
-        assertEquals(expected, actual);
-
-        outContent.reset();
-        BibliotecaApp.selectMenuOption("l");
-
-        expected = "\nBook List:\n" +
+        String expected = "Welcome!\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Book List:\n" +
+                "   Title                               Author                              Year\n" +
+                "-------------------------------------------------------------------------------\n" +
+                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
+                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
+                "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
+                "(4)Effective Java                      Joshua Bloch                        2001\n" +
+                "(5)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
+                "(6)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
+                "\n" +
+                "Select book to checkout: enter index\n" +
+                "\n" +
+                "Thank you! Enjoy the book.\n" +
+                "\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Enter title of the book you are returning:\n" +
+                "\n" +
+                "Thank you for returning the book.\n" +
+                "\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Book List:\n" +
                 "   Title                               Author                              Year\n" +
                 "-------------------------------------------------------------------------------\n" +
                 "(1)Hadoop: The Definitive Guide        Tom White                           2009\n" +
@@ -196,33 +307,62 @@ public class BibliotecaAppTest
                 "(3)Effective Java                      Joshua Bloch                        2001\n" +
                 "(4)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
                 "(5)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
-                "(6)Head First Java                     Kathy Sierra, Bert Bates            2005\n\n";
-        actual = getTerminalOutput();
+                "(6)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
+                "\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Quit!\n";
+
+        BibliotecaApp.program(new ByteArrayInputStream("c\n1\nr\nHead First Java\nl\nq\n".getBytes()), new PrintStream(outContent));
+        String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
 
     @Test
-    public void testReturnFifthBookAndListBooks()
+    public void testReturnAvailableBookAndListBooks()
     {
-        BibliotecaApp.initialiseOrResetLibrary();
-
-        BibliotecaApp.checkoutBook("5");
-
-        String expected = "\nThank you! Enjoy the book.\n\n";
-        String actual = getTerminalOutput();
-        assertEquals(expected, actual);
-
-        outContent.reset();
-        BibliotecaApp.returnBook("Java All-in-One For Dummies");
-
-        expected = "\nThank you for returning the book.\n\n";
-        actual = getTerminalOutput();
-        assertEquals(expected, actual);
-
-        outContent.reset();
-        BibliotecaApp.selectMenuOption("l");
-
-        expected = "\nBook List:\n" +
+        String expected = "Welcome!\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Book List:\n" +
+                "   Title                               Author                              Year\n" +
+                "-------------------------------------------------------------------------------\n" +
+                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
+                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
+                "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
+                "(4)Effective Java                      Joshua Bloch                        2001\n" +
+                "(5)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
+                "(6)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
+                "\n" +
+                "Select book to checkout: enter index\n" +
+                "\n" +
+                "Thank you! Enjoy the book.\n" +
+                "\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Enter title of the book you are returning:\n" +
+                "\n" +
+                "Thank you for returning the book.\n" +
+                "\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Book List:\n" +
                 "   Title                               Author                              Year\n" +
                 "-------------------------------------------------------------------------------\n" +
                 "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
@@ -230,107 +370,142 @@ public class BibliotecaAppTest
                 "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
                 "(4)Effective Java                      Joshua Bloch                        2001\n" +
                 "(5)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
-                "(6)Java All-in-One For Dummies         Doug Lowe                           2014\n\n";
-        actual = getTerminalOutput();
+                "(6)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
+                "\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Quit!\n";
+
+        BibliotecaApp.program(new ByteArrayInputStream("c\n5\nr\nJava All-in-One For Dummies\nl\nq\n".getBytes()), new PrintStream(outContent));
+        String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
 
     @Test
     public void testMisspeltReturnAndListBooks()
     {
-        BibliotecaApp.initialiseOrResetLibrary();
-
-        BibliotecaApp.checkoutBook("5");
-
-        String expected = "\nThank you! Enjoy the book.\n\n";
-        String actual = getTerminalOutput();
-        assertEquals(expected, actual);
-
-        outContent.reset();
-        BibliotecaApp.returnBook("Java All-in-One For Dummie");
-
-        expected = "\nThat is not a valid book to return.\n\n";
-        actual = getTerminalOutput();
-        assertEquals(expected, actual);
-
-        outContent.reset();
-        BibliotecaApp.selectMenuOption("l");
-
-        expected = "\nBook List:\n" +
+        String expected = "Welcome!\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Book List:\n" +
                 "   Title                               Author                              Year\n" +
                 "-------------------------------------------------------------------------------\n" +
                 "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
                 "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
                 "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
                 "(4)Effective Java                      Joshua Bloch                        2001\n" +
-                "(5)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n\n";
-        actual = getTerminalOutput();
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testReturnAvailableBookAndListBooks()
-    {
-        BibliotecaApp.initialiseOrResetLibrary();
-
-        BibliotecaApp.checkoutBook("5");
-
-        String expected = "\nThank you! Enjoy the book.\n\n";
-        String actual = getTerminalOutput();
-        assertEquals(expected, actual);
-
-        outContent.reset();
-        BibliotecaApp.returnBook("Effective Java");
-
-        expected = "\nThat is not a valid book to return.\n\n";
-        actual = getTerminalOutput();
-        assertEquals(expected, actual);
-
-        outContent.reset();
-        BibliotecaApp.selectMenuOption("l");
-
-        expected = "\nBook List:\n" +
+                "(5)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
+                "(6)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
+                "\n" +
+                "Select book to checkout: enter index\n" +
+                "\n" +
+                "Thank you! Enjoy the book.\n" +
+                "\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Enter title of the book you are returning:\n" +
+                "\n" +
+                "That is not a valid book to return.\n" +
+                "\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Book List:\n" +
                 "   Title                               Author                              Year\n" +
                 "-------------------------------------------------------------------------------\n" +
                 "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
                 "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
                 "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
                 "(4)Effective Java                      Joshua Bloch                        2001\n" +
-                "(5)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n\n";
-        actual = getTerminalOutput();
+                "(5)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
+                "\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Quit!\n";
+
+        BibliotecaApp.program(new ByteArrayInputStream("c\n5\nr\nJava All-in-One For Dummie\nl\nq\n".getBytes()), new PrintStream(outContent));
+        String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
 
     @Test
     public void testInvalidReturnAndListBooks()
     {
-        BibliotecaApp.initialiseOrResetLibrary();
-
-        BibliotecaApp.checkoutBook("5");
-
-        String expected = "\nThank you! Enjoy the book.\n\n";
-        String actual = getTerminalOutput();
-        assertEquals(expected, actual);
-
-        outContent.reset();
-        BibliotecaApp.returnBook("&");
-
-        expected = "\nThat is not a valid book to return.\n\n";
-        actual = getTerminalOutput();
-        assertEquals(expected, actual);
-
-        outContent.reset();
-        BibliotecaApp.selectMenuOption("l");
-
-        expected = "\nBook List:\n" +
+        String expected = "Welcome!\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Book List:\n" +
                 "   Title                               Author                              Year\n" +
                 "-------------------------------------------------------------------------------\n" +
                 "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
                 "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
                 "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
                 "(4)Effective Java                      Joshua Bloch                        2001\n" +
-                "(5)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n\n";
-        actual = getTerminalOutput();
+                "(5)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
+                "(6)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
+                "\n" +
+                "Select book to checkout: enter index\n" +
+                "\n" +
+                "Thank you! Enjoy the book.\n" +
+                "\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Enter title of the book you are returning:\n" +
+                "\n" +
+                "That is not a valid book to return.\n" +
+                "\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Book List:\n" +
+                "   Title                               Author                              Year\n" +
+                "-------------------------------------------------------------------------------\n" +
+                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
+                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
+                "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
+                "(4)Effective Java                      Joshua Bloch                        2001\n" +
+                "(5)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
+                "\n" +
+                "Menu Options:\n" +
+                "\tList Books: enter \"l\"\n" +
+                "\tCheckout Book: enter \"c\"\n" +
+                "\tReturn Book: enter \"r\"\n" +
+                "\tQuit: enter \"q\"\n" +
+                "\n" +
+                "Quit!\n";
+
+        BibliotecaApp.program(new ByteArrayInputStream("c\n5\nr\n&\nl\nq\n".getBytes()), new PrintStream(outContent));
+        String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
 

@@ -1,29 +1,34 @@
 package com.twu.biblioteca;
 
-import java.io.Console;
+import java.io.*;
 
 public class BibliotecaApp
 {
     private static Library library;
 
+    private static BufferedReader in;
+    private static PrintStream out;
+    
     public static void main(String[] args)
     {
-        welcome();
+        program(System.in, System.out);
+    }
+    
+    static void program(InputStream inStream, PrintStream outStream)
+    {
+        setStreams(inStream, outStream);
 
-        initialiseOrResetLibrary();
+        out.println("Welcome!");
+
+        library = new Library();
 
         mainLoop();
-
     }
 
-    static void welcome()
+    private static void setStreams(InputStream inStream, PrintStream outStream)
     {
-        System.out.println("Welcome!");
-    }
-
-    static void initialiseOrResetLibrary()
-    {
-        library = new Library();
+        in = new BufferedReader(new InputStreamReader(inStream));
+        out = outStream;
     }
 
     private static void mainLoop()
@@ -34,29 +39,41 @@ public class BibliotecaApp
         {
             printMenuOptions();
 
-            Console console = System.console();
-            String input = console.readLine();
+            String input = getInput();
 
             cont = selectMenuOption(input);
         }
     }
 
-    static void printMenuOptions()
+    private static String getInput()
     {
-        System.out.println("Menu Options:\n" +
+        try
+        {
+            return in.readLine();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    private static void printMenuOptions()
+    {
+        out.println("Menu Options:\n" +
                 "\tList Books: enter \"l\"\n" +
                 "\tCheckout Book: enter \"c\"\n" +
                 "\tReturn Book: enter \"r\"\n" +
                 "\tQuit: enter \"q\"");
     }
 
-    static boolean selectMenuOption(String input)
+    private static boolean selectMenuOption(String input)
     {
-        System.out.println();
+        out.println();
 
-        if(input.length() != 1)
+        if(input == null || input.length() != 1)
         {
-            System.out.println("Select a valid option!");
+            out.println("Select a valid option!");
             return true;
         }
 
@@ -65,7 +82,7 @@ public class BibliotecaApp
         switch (c)
         {
             case 'l':
-                System.out.println(library.printAvailableBooks());
+                out.println(library.printAvailableBooks());
                 break;
             case 'c':
                 checkoutOption();
@@ -74,10 +91,10 @@ public class BibliotecaApp
                 returnOption();
                 break;
             case 'q':
-                System.out.println("Quit!");
+                out.println("Quit!");
                 return false;
             default:
-                System.out.println("Select a valid option!");
+                out.println("Select a valid option!");
         }
 
         return true;
@@ -85,19 +102,18 @@ public class BibliotecaApp
 
     private static void checkoutOption()
     {
-        System.out.println(library.printAvailableBooks());
+        out.println(library.printAvailableBooks());
 
-        System.out.println("Select book to checkout: enter index");
+        out.println("Select book to checkout: enter index");
 
-        Console console = System.console();
-        String input = console.readLine();
+        String input = getInput();
 
         checkoutBook(input);
     }
 
-    static void checkoutBook(String input)
+    private static void checkoutBook(String input)
     {
-        System.out.println();
+        out.println();
 
         int index;
 
@@ -107,7 +123,7 @@ public class BibliotecaApp
         }
         catch (NumberFormatException ex)
         {
-            System.out.println("Not a valid index of a book!\n");
+            out.println("Not a valid index of a book!\n");
             return;
         }
 
@@ -115,37 +131,36 @@ public class BibliotecaApp
 
         if (success)
         {
-            System.out.println("Thank you! Enjoy the book.\n");
+            out.println("Thank you! Enjoy the book.\n");
         }
         else
         {
-            System.out.println("That book is not available!\n");
+            out.println("That book is not available!\n");
         }
     }
 
     private static void returnOption()
     {
-        System.out.println("Enter title of the book you are returning:");
+        out.println("Enter title of the book you are returning:");
 
-        Console console = System.console();
-        String input = console.readLine();
+        String input = getInput();
 
         returnBook(input);
     }
 
-    static void returnBook(String input)
+    private static void returnBook(String input)
     {
-        System.out.println();
+        out.println();
 
         boolean success = library.returnBook(input);
 
         if(success)
         {
-            System.out.println("Thank you for returning the book.\n");
+            out.println("Thank you for returning the book.\n");
         }
         else
         {
-            System.out.println("That is not a valid book to return.\n");
+            out.println("That is not a valid book to return.\n");
         }
     }
 }
