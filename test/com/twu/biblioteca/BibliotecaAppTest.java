@@ -38,7 +38,7 @@ public class BibliotecaAppTest
     }
 
     @Test
-    public void testCheckoutAndQuit()
+    public void testCheckoutBookAndQuit()
     {
         String expected = "Welcome!\n" +
                 getMenuOptionsString() +
@@ -405,6 +405,34 @@ public class BibliotecaAppTest
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void testCheckoutMovieAndQuit()
+    {
+        String expected = "Welcome!\n" +
+                getMenuOptionsString() +
+                "\n" +
+                "Movie List:\n" +
+                "   Title               Year                Director            Rating\n" +
+                "---------------------------------------------------------------------\n" +
+                "(1)Casablanca          1942                Michael Curtiz      9\n" +
+                "(2)The Godfather       1972                Francis Coppola     9\n" +
+                "(3)Date Movie          2006                Aaron Seltzer       2\n" +
+                "(4)Avatar              2009                James Cameron       8\n" +
+                "(5)Iron Man            2008                Jon Favreau         7\n" +
+                "\n" +
+                "Select movie to checkout: enter index\n" +
+                "\n" +
+                "Thank you! Enjoy the movie.\n" +
+                "\n" +
+                getMenuOptionsString() +
+                "\n" +
+                "Quit!\n";
+
+        BibliotecaApp.program(new ByteArrayInputStream("k\n1\nq\n".getBytes()), new PrintStream(outContent));
+        String actual = getTerminalOutput();
+        assertEquals(expected, actual);
+    }
+
     private String getTerminalOutput()
     {
         String text = outContent.toString();
@@ -419,6 +447,7 @@ public class BibliotecaAppTest
                 "\tCheckout Book: enter \"c\"\n" +
                 "\tReturn Book: enter \"r\"\n" +
                 "\tList Movies: enter \"m\"\n" +
+                "\tCheckout Movie: enter \"k\"\n" +
                 "\tQuit: enter \"q\"\n";
     }
 }
