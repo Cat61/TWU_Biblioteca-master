@@ -65,6 +65,7 @@ public class BibliotecaApp
                 "\tCheckout Book: enter \"c\"\n" +
                 "\tReturn Book: enter \"r\"\n" +
                 "\tList Movies: enter \"m\"\n" +
+                "\tCheckout Movie: enter \"k\"\n" +
                 "\tQuit: enter \"q\"");
     }
 
@@ -86,13 +87,16 @@ public class BibliotecaApp
                 out.println(library.printAvailableBooks());
                 break;
             case 'c':
-                checkoutOption();
+                checkoutBookOption();
                 break;
             case 'r':
                 returnOption();
                 break;
             case 'm':
                 out.println(library.printAvailableMovies());
+                break;
+            case 'k':
+                checkoutMovieOption();
                 break;
             case 'q':
                 out.println("Quit!");
@@ -104,7 +108,7 @@ public class BibliotecaApp
         return true;
     }
 
-    private static void checkoutOption()
+    private static void checkoutBookOption()
     {
         out.println(library.printAvailableBooks());
 
@@ -131,7 +135,7 @@ public class BibliotecaApp
             return;
         }
 
-        boolean success = library.checkout(index - 1);
+        boolean success = library.checkoutBook(index - 1);
 
         if (success)
         {
@@ -167,4 +171,44 @@ public class BibliotecaApp
             out.println("That is not a valid book to return.\n");
         }
     }
+
+    private static void checkoutMovieOption()
+    {
+        out.println(library.printAvailableMovies());
+
+        out.println("Select movie to checkout: enter index");
+
+        String input = getInput();
+
+        checkoutMovie(input);
+    }
+
+    private static void checkoutMovie(String input)
+    {
+        out.println();
+
+        int index;
+
+        try
+        {
+            index = Integer.parseInt(input);
+        }
+        catch (NumberFormatException ex)
+        {
+            out.println("Not a valid index of a movie!\n");
+            return;
+        }
+
+        boolean success = library.checkoutMovie(index - 1);
+
+        if (success)
+        {
+            out.println("Thank you! Enjoy the movie.\n");
+        }
+        else
+        {
+            out.println("That movie is not available!\n");
+        }
+    }
+
 }

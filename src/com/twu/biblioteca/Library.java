@@ -8,6 +8,7 @@ public class Library
     private List<Book> books;
     private List<Book> availableBooks;
 
+    private List<Movie> movies;
     private List<Movie> availableMovies;
 
     public Library()
@@ -15,12 +16,13 @@ public class Library
         books = Generate.listOfBooks();
         availableBooks = new ArrayList<Book>(books);
 
-        availableMovies = Generate.listOfMovies();
+        movies = Generate.listOfMovies();
+        availableMovies = new ArrayList<Movie>(movies);
     }
 
-    public boolean checkout(int index)
+    public boolean checkoutBook(int index)
     {
-        if(isInvalidIndex(index))
+        if(isInvalidIndex(index, availableBooks))
         {
             return false;
         }
@@ -38,14 +40,9 @@ public class Library
 
     }
 
-    public boolean isAvailable(int index)
+    private boolean isInvalidIndex(int index, List list)
     {
-        return !isInvalidIndex(index) && books.get(index).isAvailable();
-    }
-
-    private boolean isInvalidIndex(int index)
-    {
-        return index < 0 || index >= availableBooks.size();
+        return index < 0 || index >= list.size();
     }
 
     public boolean returnBook(String title)
@@ -60,6 +57,30 @@ public class Library
             }
         }
         return false;
+    }
+
+    public boolean checkoutMovie(int index)
+    {
+        if(isInvalidIndex(index, availableMovies))
+        {
+            return false;
+        }
+
+        Movie m = availableMovies.get(index);
+
+        if (!m.isAvailable())
+        {
+            return false;
+        }
+
+        m.setAvailability(false);
+        availableMovies.remove(index);
+        return true;
+    }
+
+    public boolean isBookAvailable(int index)
+    {
+        return books.get(index).isAvailable();
     }
 
     public String printAllBooks()

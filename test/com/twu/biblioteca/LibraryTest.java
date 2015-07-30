@@ -55,37 +55,37 @@ public class LibraryTest
     @Test
     public void testCheckout()
     {
-        boolean success = library.checkout(3);
+        boolean success = library.checkoutBook(3);
         assertTrue(success);
 
-        boolean available = library.isAvailable(3);
+        boolean available = library.isBookAvailable(3);
         assertFalse(available);
     }
 
     @Test
     public void testUnsuccessfulCheckoutWithMinus()
     {
-        boolean success = library.checkout(-1);
+        boolean success = library.checkoutBook(-1);
         assertFalse(success);
     }
 
     @Test
     public void testUnsuccessfulCheckoutWithOutOfIndex()
     {
-        boolean success = library.checkout(8);
+        boolean success = library.checkoutBook(8);
         assertFalse(success);
     }
 
     @Test
     public void testReturnBook()
     {
-        boolean success = library.checkout(3);
+        boolean success = library.checkoutBook(3);
         assertTrue(success);
 
         success = library.returnBook("Effective Java");
         assertTrue(success);
 
-        boolean available = library.isAvailable(3);
+        boolean available = library.isBookAvailable(3);
         assertTrue(available);
     }
 
@@ -95,20 +95,20 @@ public class LibraryTest
         boolean success = library.returnBook("Effective Java");
         assertFalse(success);
 
-        boolean available = library.isAvailable(3);
+        boolean available = library.isBookAvailable(3);
         assertTrue(available);
     }
 
     @Test
     public void testUnsuccessfulReturnBookWithMisspeltBook()
     {
-        boolean success = library.checkout(3);
+        boolean success = library.checkoutBook(3);
         assertTrue(success);
 
         success = library.returnBook("Effectiv Java");
         assertFalse(success);
 
-        boolean available = library.isAvailable(3);
+        boolean available = library.isBookAvailable(3);
         assertFalse(available);
     }
 }
