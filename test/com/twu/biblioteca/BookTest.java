@@ -43,7 +43,7 @@ public class BookTest
     @Test
     public void testToString()
     {
-        String expected = "Effective Java                      Joshua Bloch                        2001";
+        String expected = "Effective Java                 2001       Joshua Bloch";
         String actual = book.toString();
         assertEquals(expected, actual);
     }

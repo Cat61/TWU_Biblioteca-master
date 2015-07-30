@@ -22,22 +22,7 @@ public class Library
 
     public boolean checkoutBook(int index)
     {
-        if(isInvalidIndex(index, availableBooks))
-        {
-            return false;
-        }
-
-        Book b = availableBooks.get(index);
-
-        if (!b.isAvailable())
-        {
-            return false;
-        }
-
-        b.setAvailability(false);
-        availableBooks.remove(index);
-        return true;
-
+        return checkout(availableBooks, index);
     }
 
     private boolean isInvalidIndex(int index, List list)
@@ -61,21 +46,7 @@ public class Library
 
     public boolean checkoutMovie(int index)
     {
-        if(isInvalidIndex(index, availableMovies))
-        {
-            return false;
-        }
-
-        Movie m = availableMovies.get(index);
-
-        if (!m.isAvailable())
-        {
-            return false;
-        }
-
-        m.setAvailability(false);
-        availableMovies.remove(index);
-        return true;
+        return checkout(availableMovies, index);
     }
 
     public boolean isBookAvailable(int index)
@@ -83,47 +54,52 @@ public class Library
         return books.get(index).isAvailable();
     }
 
-    public String printAllBooks()
-    {
-        String str = "Book List:\n"
-                + String.format("%-35s %-35s %s", "Title", "Author", "Year") + "\n"
-                + "----------------------------------------------------------------------------\n";
-
-        for (Book b : books)
-        {
-            str += b.toString() + "\n";
-        }
-
-        return str;
-    }
-
     public String printAvailableBooks()
     {
         String str = "Book List:\n"
-                + String.format("   %-35s %-35s %s", "Title", "Author", "Year") + "\n"
+                + String.format("   %-30s %-10s %s", "Title", "Year", "Author") + "\n"
                 + "-------------------------------------------------------------------------------\n";
 
-        for (int i = 0; i < availableBooks.size(); i++)
-        {
-            Book b = availableBooks.get(i);
-            str += "(" + (i+1) + ")" + b.toString() + "\n";
-        }
-
-        return str;
+        return str + printList(availableBooks);
     }
 
     public String printAvailableMovies()
     {
         String str = "Movie List:\n"
-                + String.format("   %-19s %-19s %-19s %s", "Title", "Year", "Director", "Rating") + "\n"
-                + "---------------------------------------------------------------------\n";
+                + String.format("   %-30s %-10s %-20s %s", "Title", "Year", "Director", "Rating") + "\n"
+                + "------------------------------------------------------------------------\n";
 
-        for (int i = 0; i < availableMovies.size(); i++)
+        return str + printList(availableMovies);
+    }
+
+    private String printList(List list)
+    {
+        String str = "";
+
+        for (int i = 0; i < list.size(); i++)
         {
-            Movie m = availableMovies.get(i);
-            str += "(" + (i+1) + ")" + m.toString() + "\n";
+            str += "(" + (i+1) + ")" + list.get(i).toString() + "\n";
         }
 
         return str;
+    }
+
+    private boolean checkout(List<? extends LibraryItem> list, int index)
+    {
+        if(isInvalidIndex(index, list))
+        {
+            return false;
+        }
+
+        LibraryItem item = list.get(index);
+
+        if (!item.isAvailable())
+        {
+            return false;
+        }
+
+        item.setAvailability(false);
+        list.remove(index);
+        return true;
     }
 }

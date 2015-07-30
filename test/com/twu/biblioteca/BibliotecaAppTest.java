@@ -18,15 +18,7 @@ public class BibliotecaAppTest
         String expected = "Welcome!\n" +
                 getMenuOptionsString() +
                 "\n" +
-                "Book List:\n" +
-                "   Title                               Author                              Year\n" +
-                "-------------------------------------------------------------------------------\n" +
-                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
-                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
-                "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
-                "(4)Effective Java                      Joshua Bloch                        2001\n" +
-                "(5)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
-                "(6)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
+                getBookList() +
                 "\n" +
                 getMenuOptionsString() +
                 "\n" +
@@ -43,15 +35,7 @@ public class BibliotecaAppTest
         String expected = "Welcome!\n" +
                 getMenuOptionsString() +
                 "\n" +
-                "Book List:\n" +
-                "   Title                               Author                              Year\n" +
-                "-------------------------------------------------------------------------------\n" +
-                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
-                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
-                "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
-                "(4)Effective Java                      Joshua Bloch                        2001\n" +
-                "(5)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
-                "(6)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
+                getBookList() +
                 "\n" +
                 "Select book to checkout: enter index\n" +
                 "\n" +
@@ -72,15 +56,7 @@ public class BibliotecaAppTest
         String expected = "Welcome!\n" +
                 getMenuOptionsString() +
                 "\n" +
-                "Book List:\n" +
-                "   Title                               Author                              Year\n" +
-                "-------------------------------------------------------------------------------\n" +
-                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
-                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
-                "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
-                "(4)Effective Java                      Joshua Bloch                        2001\n" +
-                "(5)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
-                "(6)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
+                getBookList() +
                 "\n" +
                 "Select book to checkout: enter index\n" +
                 "\n" +
@@ -89,13 +65,13 @@ public class BibliotecaAppTest
                 getMenuOptionsString() +
                 "\n" +
                 "Book List:\n" +
-                "   Title                               Author                              Year\n" +
+                "   Title                          Year       Author\n" +
                 "-------------------------------------------------------------------------------\n" +
-                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
-                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
-                "(3)Effective Java                      Joshua Bloch                        2001\n" +
-                "(4)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
-                "(5)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
+                "(1)Head First Java                2005       Kathy Sierra, Bert Bates\n" +
+                "(2)Hadoop: The Definitive Guide   2009       Tom White\n" +
+                "(3)Effective Java                 2001       Joshua Bloch\n" +
+                "(4)Java All-in-One For Dummies    2014       Doug Lowe\n" +
+                "(5)Learning Java                  2013       Patrick Niemeyer, Daniel Leuck\n" +
                 "\n" +
                 getMenuOptionsString() +
                 "\n" +
@@ -112,15 +88,7 @@ public class BibliotecaAppTest
         String expected = "Welcome!\n" +
                 getMenuOptionsString() +
                 "\n" +
-                "Book List:\n" +
-                "   Title                               Author                              Year\n" +
-                "-------------------------------------------------------------------------------\n" +
-                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
-                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
-                "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
-                "(4)Effective Java                      Joshua Bloch                        2001\n" +
-                "(5)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
-                "(6)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
+                getBookList() +
                 "\n" +
                 "Select book to checkout: enter index\n" +
                 "\n" +
@@ -128,15 +96,7 @@ public class BibliotecaAppTest
                 "\n" +
                 getMenuOptionsString() +
                 "\n" +
-                "Book List:\n" +
-                "   Title                               Author                              Year\n" +
-                "-------------------------------------------------------------------------------\n" +
-                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
-                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
-                "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
-                "(4)Effective Java                      Joshua Bloch                        2001\n" +
-                "(5)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
-                "(6)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
+                getBookList() +
                 "\n" +
                 getMenuOptionsString() +
                 "\n" +
@@ -201,15 +161,7 @@ public class BibliotecaAppTest
         String expected = "Welcome!\n" +
                 getMenuOptionsString() +
                 "\n" +
-                "Book List:\n" +
-                "   Title                               Author                              Year\n" +
-                "-------------------------------------------------------------------------------\n" +
-                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
-                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
-                "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
-                "(4)Effective Java                      Joshua Bloch                        2001\n" +
-                "(5)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
-                "(6)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
+                getBookList() +
                 "\n" +
                 "Select book to checkout: enter index\n" +
                 "\n" +
@@ -224,14 +176,14 @@ public class BibliotecaAppTest
                 getMenuOptionsString() +
                 "\n" +
                 "Book List:\n" +
-                "   Title                               Author                              Year\n" +
+                "   Title                          Year       Author\n" +
                 "-------------------------------------------------------------------------------\n" +
-                "(1)Hadoop: The Definitive Guide        Tom White                           2009\n" +
-                "(2)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
-                "(3)Effective Java                      Joshua Bloch                        2001\n" +
-                "(4)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
-                "(5)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
-                "(6)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
+                "(1)Hadoop: The Definitive Guide   2009       Tom White\n" +
+                "(2)Java: A Beginner's Guide       2011       Herbert Schildt\n" +
+                "(3)Effective Java                 2001       Joshua Bloch\n" +
+                "(4)Java All-in-One For Dummies    2014       Doug Lowe\n" +
+                "(5)Learning Java                  2013       Patrick Niemeyer, Daniel Leuck\n" +
+                "(6)Head First Java                2005       Kathy Sierra, Bert Bates\n" +
                 "\n" +
                 getMenuOptionsString() +
                 "\n" +
@@ -248,15 +200,7 @@ public class BibliotecaAppTest
         String expected = "Welcome!\n" +
                 getMenuOptionsString() +
                 "\n" +
-                "Book List:\n" +
-                "   Title                               Author                              Year\n" +
-                "-------------------------------------------------------------------------------\n" +
-                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
-                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
-                "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
-                "(4)Effective Java                      Joshua Bloch                        2001\n" +
-                "(5)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
-                "(6)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
+                getBookList() +
                 "\n" +
                 "Select book to checkout: enter index\n" +
                 "\n" +
@@ -271,14 +215,14 @@ public class BibliotecaAppTest
                 getMenuOptionsString() +
                 "\n" +
                 "Book List:\n" +
-                "   Title                               Author                              Year\n" +
+                "   Title                          Year       Author\n" +
                 "-------------------------------------------------------------------------------\n" +
-                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
-                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
-                "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
-                "(4)Effective Java                      Joshua Bloch                        2001\n" +
-                "(5)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
-                "(6)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
+                "(1)Head First Java                2005       Kathy Sierra, Bert Bates\n" +
+                "(2)Hadoop: The Definitive Guide   2009       Tom White\n" +
+                "(3)Java: A Beginner's Guide       2011       Herbert Schildt\n" +
+                "(4)Effective Java                 2001       Joshua Bloch\n" +
+                "(5)Learning Java                  2013       Patrick Niemeyer, Daniel Leuck\n" +
+                "(6)Java All-in-One For Dummies    2014       Doug Lowe\n" +
                 "\n" +
                 getMenuOptionsString() +
                 "\n" +
@@ -295,15 +239,7 @@ public class BibliotecaAppTest
         String expected = "Welcome!\n" +
                 getMenuOptionsString() +
                 "\n" +
-                "Book List:\n" +
-                "   Title                               Author                              Year\n" +
-                "-------------------------------------------------------------------------------\n" +
-                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
-                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
-                "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
-                "(4)Effective Java                      Joshua Bloch                        2001\n" +
-                "(5)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
-                "(6)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
+                getBookList() +
                 "\n" +
                 "Select book to checkout: enter index\n" +
                 "\n" +
@@ -318,13 +254,13 @@ public class BibliotecaAppTest
                 getMenuOptionsString() +
                 "\n" +
                 "Book List:\n" +
-                "   Title                               Author                              Year\n" +
+                "   Title                          Year       Author\n" +
                 "-------------------------------------------------------------------------------\n" +
-                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
-                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
-                "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
-                "(4)Effective Java                      Joshua Bloch                        2001\n" +
-                "(5)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
+                "(1)Head First Java                2005       Kathy Sierra, Bert Bates\n" +
+                "(2)Hadoop: The Definitive Guide   2009       Tom White\n" +
+                "(3)Java: A Beginner's Guide       2011       Herbert Schildt\n" +
+                "(4)Effective Java                 2001       Joshua Bloch\n" +
+                "(5)Learning Java                  2013       Patrick Niemeyer, Daniel Leuck\n" +
                 "\n" +
                 getMenuOptionsString() +
                 "\n" +
@@ -341,15 +277,7 @@ public class BibliotecaAppTest
         String expected = "Welcome!\n" +
                 getMenuOptionsString() +
                 "\n" +
-                "Book List:\n" +
-                "   Title                               Author                              Year\n" +
-                "-------------------------------------------------------------------------------\n" +
-                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
-                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
-                "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
-                "(4)Effective Java                      Joshua Bloch                        2001\n" +
-                "(5)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
-                "(6)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
+                getBookList() +
                 "\n" +
                 "Select book to checkout: enter index\n" +
                 "\n" +
@@ -364,13 +292,13 @@ public class BibliotecaAppTest
                 getMenuOptionsString() +
                 "\n" +
                 "Book List:\n" +
-                "   Title                               Author                              Year\n" +
+                "   Title                          Year       Author\n" +
                 "-------------------------------------------------------------------------------\n" +
-                "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
-                "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
-                "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
-                "(4)Effective Java                      Joshua Bloch                        2001\n" +
-                "(5)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n" +
+                "(1)Head First Java                2005       Kathy Sierra, Bert Bates\n" +
+                "(2)Hadoop: The Definitive Guide   2009       Tom White\n" +
+                "(3)Java: A Beginner's Guide       2011       Herbert Schildt\n" +
+                "(4)Effective Java                 2001       Joshua Bloch\n" +
+                "(5)Learning Java                  2013       Patrick Niemeyer, Daniel Leuck\n" +
                 "\n" +
                 getMenuOptionsString() +
                 "\n" +
@@ -388,13 +316,13 @@ public class BibliotecaAppTest
                 getMenuOptionsString() +
                 "\n" +
                 "Movie List:\n" +
-                "   Title               Year                Director            Rating\n" +
-                "---------------------------------------------------------------------\n" +
-                "(1)Casablanca          1942                Michael Curtiz      9\n" +
-                "(2)The Godfather       1972                Francis Coppola     9\n" +
-                "(3)Date Movie          2006                Aaron Seltzer       2\n" +
-                "(4)Avatar              2009                James Cameron       8\n" +
-                "(5)Iron Man            2008                Jon Favreau         7\n" +
+                "   Title                          Year       Director             Rating\n" +
+                "------------------------------------------------------------------------\n" +
+                "(1)Casablanca                     1942       Michael Curtiz       9\n" +
+                "(2)The Godfather                  1972       Francis Coppola      9\n" +
+                "(3)Date Movie                     2006       Aaron Seltzer        2\n" +
+                "(4)Avatar                         2009       James Cameron        8\n" +
+                "(5)Iron Man                       2008       Jon Favreau          7\n" +
                 "\n" +
                 getMenuOptionsString() +
                 "\n" +
@@ -412,13 +340,13 @@ public class BibliotecaAppTest
                 getMenuOptionsString() +
                 "\n" +
                 "Movie List:\n" +
-                "   Title               Year                Director            Rating\n" +
-                "---------------------------------------------------------------------\n" +
-                "(1)Casablanca          1942                Michael Curtiz      9\n" +
-                "(2)The Godfather       1972                Francis Coppola     9\n" +
-                "(3)Date Movie          2006                Aaron Seltzer       2\n" +
-                "(4)Avatar              2009                James Cameron       8\n" +
-                "(5)Iron Man            2008                Jon Favreau         7\n" +
+                "   Title                          Year       Director             Rating\n" +
+                "------------------------------------------------------------------------\n" +
+                "(1)Casablanca                     1942       Michael Curtiz       9\n" +
+                "(2)The Godfather                  1972       Francis Coppola      9\n" +
+                "(3)Date Movie                     2006       Aaron Seltzer        2\n" +
+                "(4)Avatar                         2009       James Cameron        8\n" +
+                "(5)Iron Man                       2008       Jon Favreau          7\n" +
                 "\n" +
                 "Select movie to checkout: enter index\n" +
                 "\n" +
@@ -449,5 +377,18 @@ public class BibliotecaAppTest
                 "\tList Movies: enter \"m\"\n" +
                 "\tCheckout Movie: enter \"k\"\n" +
                 "\tQuit: enter \"q\"\n";
+    }
+
+    private String getBookList()
+    {
+        return "Book List:\n" +
+                "   Title                          Year       Author\n" +
+                "-------------------------------------------------------------------------------\n" +
+                "(1)Head First Java                2005       Kathy Sierra, Bert Bates\n" +
+                "(2)Hadoop: The Definitive Guide   2009       Tom White\n" +
+                "(3)Java: A Beginner's Guide       2011       Herbert Schildt\n" +
+                "(4)Effective Java                 2001       Joshua Bloch\n" +
+                "(5)Java All-in-One For Dummies    2014       Doug Lowe\n" +
+                "(6)Learning Java                  2013       Patrick Niemeyer, Daniel Leuck\n";
     }
 }

@@ -17,36 +17,18 @@ public class LibraryTest
     }
 
     @Test
-    public void testPrintAllBooks()
-    {
-        String expected =
-                "Book List:\n" +
-                "Title                               Author                              Year\n" +
-                "----------------------------------------------------------------------------\n" +
-                "Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
-                "Hadoop: The Definitive Guide        Tom White                           2009\n" +
-                "Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
-                "Effective Java                      Joshua Bloch                        2001\n" +
-                "Java All-in-One For Dummies         Doug Lowe                           2014\n" +
-                "Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n";
-
-        String actual = library.printAllBooks();
-        assertEquals(expected, actual);
-    }
-
-    @Test
     public void testPrintAvailableBooks()
     {
         String expected =
                 "Book List:\n" +
-                        "   Title                               Author                              Year\n" +
-                        "-------------------------------------------------------------------------------\n" +
-                        "(1)Head First Java                     Kathy Sierra, Bert Bates            2005\n" +
-                        "(2)Hadoop: The Definitive Guide        Tom White                           2009\n" +
-                        "(3)Java: A Beginner's Guide            Herbert Schildt                     2011\n" +
-                        "(4)Effective Java                      Joshua Bloch                        2001\n" +
-                        "(5)Java All-in-One For Dummies         Doug Lowe                           2014\n" +
-                        "(6)Learning Java                       Patrick Niemeyer, Daniel Leuck      2013\n";
+                "   Title                          Year       Author\n" +
+                "-------------------------------------------------------------------------------\n" +
+                "(1)Head First Java                2005       Kathy Sierra, Bert Bates\n" +
+                "(2)Hadoop: The Definitive Guide   2009       Tom White\n" +
+                "(3)Java: A Beginner's Guide       2011       Herbert Schildt\n" +
+                "(4)Effective Java                 2001       Joshua Bloch\n" +
+                "(5)Java All-in-One For Dummies    2014       Doug Lowe\n" +
+                "(6)Learning Java                  2013       Patrick Niemeyer, Daniel Leuck\n";
 
         String actual = library.printAvailableBooks();
         assertEquals(expected, actual);
