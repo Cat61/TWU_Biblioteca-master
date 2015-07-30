@@ -25,14 +25,17 @@ public class Library
             return false;
         }
 
-        boolean success = availableBooks.get(index).checkout();
+        Book b = availableBooks.get(index);
 
-        if(success)
+        if (!b.isAvailable())
         {
-            availableBooks.remove(index);
+            return false;
         }
 
-        return success;
+        b.setAvailability(false);
+        availableBooks.remove(index);
+        return true;
+
     }
 
     public boolean isAvailable(int index)
@@ -51,7 +54,7 @@ public class Library
         {
             if(!b.isAvailable() && b.equalsTitle(title))
             {
-                b.returnBook();
+                b.setAvailability(true);
                 availableBooks.add(b);
                 return true;
             }

@@ -2,9 +2,9 @@ package com.twu.biblioteca;
 
 public class Book
 {
-    private String title;
-    private String author;
-    private String year;
+    private final String title;
+    private final String author;
+    private final String year;
     private boolean available;
 
     public Book(String titleArg, String authorArg, String yearArg)
@@ -13,19 +13,6 @@ public class Book
         author = authorArg;
         year = yearArg;
         available = true;
-    }
-
-    public boolean checkout()
-    {
-        if(available)
-        {
-            available = false;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
     }
 
     public boolean isAvailable()
@@ -38,17 +25,9 @@ public class Book
         return title.equals(t);
     }
 
-    public boolean returnBook()
+    public void setAvailability(boolean newAvailability)
     {
-        if(available)
-        {
-            return false;
-        }
-        else
-        {
-            available = true;
-            return true;
-        }
+        available = newAvailability;
     }
 
     @Override
