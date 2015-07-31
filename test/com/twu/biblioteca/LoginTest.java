@@ -124,7 +124,7 @@ public class LoginTest
     }
 
     @Test
-    public void testUserDetails()
+    public void testUser1Details()
     {
         String expected = "Enter library number:\n" +
                 "Enter password:\n" +
@@ -142,6 +142,29 @@ public class LoginTest
                 "Quit!\n";
 
         BibliotecaApp.program(new ByteArrayInputStream(("123-4567\nqwerty\nu\nq\n").getBytes()), new PrintStream(outContent));
+        String actual = getTerminalOutput();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testUser2Details()
+    {
+        String expected = "Enter library number:\n" +
+                "Enter password:\n" +
+                "\n" +
+                "Welcome!\n" +
+                getMenuOptionsString() +
+                "\n" +
+                "User details:\n" +
+                "Susan Parker\n" +
+                "email: susan.parker@gmail.com\n" +
+                "tel: 0712 318 2399\n" +
+                "\n" +
+                getMenuOptionsString() +
+                "\n" +
+                "Quit!\n";
+
+        BibliotecaApp.program(new ByteArrayInputStream(("141-6211\nP@ssword\nu\nq\n").getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
