@@ -33,8 +33,9 @@ public class Generate
     public static Map<String, User> users()
     {
         Map<String, User> users = new HashMap<String, User>();
-        users.put("123-4567", new User("123-4567", "qwerty"));
-        users.put("141-6211", new User("141-6211", "P@ssword"));
+        users.put("123-4567", new User("123-4567", "qwerty", "John Smith", "john.smith@gmail.com", "0207 123 4567"));
+        users.put("141-6211", new User("141-6211", "P@ssword", "Susan Parker", "susan.parker@gmail.com", "0712 318 2399"));
         return users;
     }
 }
+

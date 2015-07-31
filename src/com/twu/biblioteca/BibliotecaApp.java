@@ -8,6 +8,8 @@ public class BibliotecaApp
 
     private static BufferedReader in;
     private static PrintStream out;
+
+    private static User user;
     
     public static void main(String[] args)
     {
@@ -54,7 +56,7 @@ public class BibliotecaApp
                 continue;
             }
 
-            User user = library.users.get(username);
+            user = library.users.get(username);
 
             out.println("Enter password:");
             String password = getInput();
@@ -144,10 +146,7 @@ public class BibliotecaApp
                 checkoutOption(Library.Item.movie);
                 break;
             case 'u':
-                out.println("User details:\n" +
-                        "John Smith\n" +
-                        "email: john.smith@gmail.com\n" +
-                        "tel: 0207 123 4567\n");
+                out.println("User details:\n" + user.details() + "\n");
                 break;
             case 'q':
                 quit();
