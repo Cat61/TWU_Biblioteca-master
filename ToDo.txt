@@ -1,0 +1,4 @@
+Record who checked out a book/movie
+Record who returnedout a book
+
+Keep record of whats done when the user quits
