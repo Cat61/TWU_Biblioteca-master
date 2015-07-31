@@ -107,6 +107,22 @@ public class LoginTest
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void testUnsuccessfulLoginWithIncorrectPassword()
+    {
+        String expected = "Enter library number:\n" +
+                "Enter password:\n" +
+                "Invalid password.\n" +
+                "\n" +
+                "Enter library number:\n" +
+                "\n" +
+                "Quit!\n";
+
+        BibliotecaApp.program(new ByteArrayInputStream(("123-4567\nP@ssword\nq\n").getBytes()), new PrintStream(outContent));
+        String actual = getTerminalOutput();
+        assertEquals(expected, actual);
+    }
+
     private String getTerminalOutput()
     {
         String text = outContent.toString();
