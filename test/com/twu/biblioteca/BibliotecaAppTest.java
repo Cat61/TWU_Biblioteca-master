@@ -452,6 +452,7 @@ public class BibliotecaAppTest
                 "\tReturn Book: enter \"r\"\n" +
                 "\tList Movies: enter \"m\"\n" +
                 "\tCheckout Movie: enter \"k\"\n" +
+                "\tUser details: enter \"u\"\n" +
                 "\tQuit: enter \"q\"\n";
     }
 

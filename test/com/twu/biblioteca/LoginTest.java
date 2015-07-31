@@ -123,6 +123,29 @@ public class LoginTest
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void testUserDetails()
+    {
+        String expected = "Enter library number:\n" +
+                "Enter password:\n" +
+                "\n" +
+                "Welcome!\n" +
+                getMenuOptionsString() +
+                "\n" +
+                "User details:\n" +
+                "John Smith\n" +
+                "email: john.smith@gmail.com\n" +
+                "tel: 0207 123 4567\n" +
+                "\n" +
+                getMenuOptionsString() +
+                "\n" +
+                "Quit!\n";
+
+        BibliotecaApp.program(new ByteArrayInputStream(("123-4567\nqwerty\nu\nq\n").getBytes()), new PrintStream(outContent));
+        String actual = getTerminalOutput();
+        assertEquals(expected, actual);
+    }
+
     private String getTerminalOutput()
     {
         String text = outContent.toString();
@@ -138,6 +161,7 @@ public class LoginTest
                 "\tReturn Book: enter \"r\"\n" +
                 "\tList Movies: enter \"m\"\n" +
                 "\tCheckout Movie: enter \"k\"\n" +
+                "\tUser details: enter \"u\"\n" +
                 "\tQuit: enter \"q\"\n";
     }
 }
