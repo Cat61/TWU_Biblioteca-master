@@ -54,10 +54,12 @@ public class BibliotecaApp
                 continue;
             }
 
+            User user = library.users.get(username);
+
             out.println("Enter password:");
             String password = getInput();
 
-            if(!library.users.containsValue(password))
+            if(!user.getPassword().equals(password))
             {
                 out.println("Invalid password.\n");
                 continue;

@@ -30,11 +30,11 @@ public class Generate
         return movies;
     }
 
-    public static Map<String, String> users()
+    public static Map<String, User> users()
     {
-        Map<String, String> users = new HashMap<String, String>();
-        users.put("123-4567", "qwerty");
-        users.put("141-6211", "P@ssword");
+        Map<String, User> users = new HashMap<String, User>();
+        users.put("123-4567", new User("123-4567", "qwerty"));
+        users.put("141-6211", new User("141-6211", "P@ssword"));
         return users;
     }
 }

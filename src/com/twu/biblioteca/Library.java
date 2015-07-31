@@ -12,7 +12,7 @@ public class Library
     private List<Movie> movies;
     private List<Movie> availableMovies;
 
-    public final Map<String, String> users;
+    public final Map<String, User> users;
 
     public Library()
     {
