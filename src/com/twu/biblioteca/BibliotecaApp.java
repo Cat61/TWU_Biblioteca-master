@@ -146,7 +146,7 @@ public class BibliotecaApp
                 checkoutOption(Library.Item.movie);
                 break;
             case 'u':
-                out.println("User details:\n" + user.details() + "\n");
+                out.println("User details:\n" + user.details());
                 break;
             case 'q':
                 quit();

@@ -29,6 +29,6 @@ public class User
 
     public String details()
     {
-        return name + "\nemail: " + email + "\ntel: " + telephone;
+        return name + "\nemail: " + email + "\ntel: " + telephone + "\n";
     }
 }
