@@ -27,4 +27,14 @@ public class Generate
         movies.add(new Movie("Iron Man", "2008", "Jon Favreau", "7"));
         return movies;
     }
+
+    public static String libraryNumber()
+    {
+        return "123-4567";
+    }
+
+    public static String password()
+    {
+        return "qwerty";
+    }
 }

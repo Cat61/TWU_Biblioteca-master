@@ -15,7 +15,7 @@ public class BibliotecaAppTest
     @Test
     public void testListBooksAndQuit()
     {
-        String expected = "Welcome!\n" +
+        String expected = getLoginAndWelcome() +
                 getMenuOptionsString() +
                 "\n" +
                 getBookList() +
@@ -24,7 +24,8 @@ public class BibliotecaAppTest
                 "\n" +
                 "Quit!\n";
 
-        BibliotecaApp.program(new ByteArrayInputStream("b\nq\n".getBytes()), new PrintStream(outContent));
+        String input = login() + "b\n" + quit();
+        BibliotecaApp.program(new ByteArrayInputStream(input.getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -32,7 +33,7 @@ public class BibliotecaAppTest
     @Test
     public void testCheckoutBookAndQuit()
     {
-        String expected = "Welcome!\n" +
+        String expected = getLoginAndWelcome() +
                 getMenuOptionsString() +
                 "\n" +
                 getBookList() +
@@ -45,7 +46,9 @@ public class BibliotecaAppTest
                 "\n" +
                 "Quit!\n";
 
-        BibliotecaApp.program(new ByteArrayInputStream("c\n1\nq\n".getBytes()), new PrintStream(outContent));
+        String input = login() + "c\n" +
+                "1\n" + quit();
+        BibliotecaApp.program(new ByteArrayInputStream(input.getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -53,7 +56,7 @@ public class BibliotecaAppTest
     @Test
     public void testCheckoutAndListBooks()
     {
-        String expected = "Welcome!\n" +
+        String expected = getLoginAndWelcome() +
                 getMenuOptionsString() +
                 "\n" +
                 getBookList() +
@@ -77,7 +80,10 @@ public class BibliotecaAppTest
                 "\n" +
                 "Quit!\n";
 
-        BibliotecaApp.program(new ByteArrayInputStream("c\n3\nb\nq\n".getBytes()), new PrintStream(outContent));
+        String input = login() + "c\n" +
+                "3\n" +
+                "b\n" + quit();
+        BibliotecaApp.program(new ByteArrayInputStream(input.getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -85,7 +91,7 @@ public class BibliotecaAppTest
     @Test
     public void testFailedCheckoutAndListBooks()
     {
-        String expected = "Welcome!\n" +
+        String expected = getLoginAndWelcome() +
                 getMenuOptionsString() +
                 "\n" +
                 getBookList() +
@@ -102,7 +108,10 @@ public class BibliotecaAppTest
                 "\n" +
                 "Quit!\n";
 
-        BibliotecaApp.program(new ByteArrayInputStream("c\n8\nb\nq\n".getBytes()), new PrintStream(outContent));
+        String input = login() + "c\n" +
+                "8\n" +
+                "b\n" + quit();
+        BibliotecaApp.program(new ByteArrayInputStream(input.getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -110,7 +119,7 @@ public class BibliotecaAppTest
     @Test
     public void testInvalidSelectMenuOptionWithChar()
     {
-        String expected = "Welcome!\n" +
+        String expected = getLoginAndWelcome() +
                 getMenuOptionsString() +
                 "\n" +
                 "Select a valid option!\n" +
@@ -118,7 +127,8 @@ public class BibliotecaAppTest
                 "\n" +
                 "Quit!\n";
 
-        BibliotecaApp.program(new ByteArrayInputStream("p\nq\n".getBytes()), new PrintStream(outContent));
+        String input = login() + "p\n" + quit();
+        BibliotecaApp.program(new ByteArrayInputStream(input.getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -126,7 +136,7 @@ public class BibliotecaAppTest
     @Test
     public void testInvalidSelectMenuOptionWithCorrectCharButMore()
     {
-        String expected = "Welcome!\n" +
+        String expected = getLoginAndWelcome() +
                 getMenuOptionsString() +
                 "\n" +
                 "Select a valid option!\n" +
@@ -134,7 +144,8 @@ public class BibliotecaAppTest
                 "\n" +
                 "Quit!\n";
 
-        BibliotecaApp.program(new ByteArrayInputStream("l hh\nq\n".getBytes()), new PrintStream(outContent));
+        String input = login() + "l hh\n" + quit();
+        BibliotecaApp.program(new ByteArrayInputStream(input.getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -142,7 +153,7 @@ public class BibliotecaAppTest
     @Test
     public void testInvalidSelectMenuOptionWithWord()
     {
-        String expected = "Welcome!\n" +
+        String expected = getLoginAndWelcome() +
                 getMenuOptionsString() +
                 "\n" +
                 "Select a valid option!\n" +
@@ -150,7 +161,8 @@ public class BibliotecaAppTest
                 "\n" +
                 "Quit!\n";
 
-        BibliotecaApp.program(new ByteArrayInputStream("line\nq\n".getBytes()), new PrintStream(outContent));
+        String input = login() + "line\n" + quit();
+        BibliotecaApp.program(new ByteArrayInputStream(input.getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -158,7 +170,7 @@ public class BibliotecaAppTest
     @Test
     public void testReturnFirstBookAndListBooks()
     {
-        String expected = "Welcome!\n" +
+        String expected = getLoginAndWelcome() +
                 getMenuOptionsString() +
                 "\n" +
                 getBookList() +
@@ -189,7 +201,12 @@ public class BibliotecaAppTest
                 "\n" +
                 "Quit!\n";
 
-        BibliotecaApp.program(new ByteArrayInputStream("c\n1\nr\nHead First Java\nb\nq\n".getBytes()), new PrintStream(outContent));
+        String input = login() + "c\n" +
+                "1\n" +
+                "r\n" +
+                "Head First Java\n" +
+                "b\n" + quit();
+        BibliotecaApp.program(new ByteArrayInputStream(input.getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -197,7 +214,7 @@ public class BibliotecaAppTest
     @Test
     public void testReturnAvailableBookAndListBooks()
     {
-        String expected = "Welcome!\n" +
+        String expected = getLoginAndWelcome() +
                 getMenuOptionsString() +
                 "\n" +
                 getBookList() +
@@ -228,7 +245,12 @@ public class BibliotecaAppTest
                 "\n" +
                 "Quit!\n";
 
-        BibliotecaApp.program(new ByteArrayInputStream("c\n5\nr\nJava All-in-One For Dummies\nb\nq\n".getBytes()), new PrintStream(outContent));
+        String input = login() + "c\n" +
+                "5\n" +
+                "r\n" +
+                "Java All-in-One For Dummies\n" +
+                "b\n" + quit();
+        BibliotecaApp.program(new ByteArrayInputStream(input.getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -236,7 +258,7 @@ public class BibliotecaAppTest
     @Test
     public void testMisspeltReturnAndListBooks()
     {
-        String expected = "Welcome!\n" +
+        String expected = getLoginAndWelcome() +
                 getMenuOptionsString() +
                 "\n" +
                 getBookList() +
@@ -266,7 +288,12 @@ public class BibliotecaAppTest
                 "\n" +
                 "Quit!\n";
 
-        BibliotecaApp.program(new ByteArrayInputStream("c\n5\nr\nJava All-in-One For Dummie\nb\nq\n".getBytes()), new PrintStream(outContent));
+        String input = login() + "c\n" +
+                "5\n" +
+                "r\n" +
+                "Java All-in-One For Dummie\n" +
+                "b\n" + quit();
+        BibliotecaApp.program(new ByteArrayInputStream(input.getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -274,7 +301,7 @@ public class BibliotecaAppTest
     @Test
     public void testInvalidReturnAndListBooks()
     {
-        String expected = "Welcome!\n" +
+        String expected = getLoginAndWelcome() +
                 getMenuOptionsString() +
                 "\n" +
                 getBookList() +
@@ -304,7 +331,12 @@ public class BibliotecaAppTest
                 "\n" +
                 "Quit!\n";
 
-        BibliotecaApp.program(new ByteArrayInputStream("c\n5\nr\n&\nb\nq\n".getBytes()), new PrintStream(outContent));
+        String input = login() + "c\n" +
+                "5\n" +
+                "r\n" +
+                "&\n" +
+                "b\n" + quit();
+        BibliotecaApp.program(new ByteArrayInputStream(input.getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -312,7 +344,7 @@ public class BibliotecaAppTest
     @Test
     public void testListMovies()
     {
-        String expected = "Welcome!\n" +
+        String expected = getLoginAndWelcome() +
                 getMenuOptionsString() +
                 "\n" +
                 getMovieList() +
@@ -321,7 +353,8 @@ public class BibliotecaAppTest
                 "\n" +
                 "Quit!\n";
 
-        BibliotecaApp.program(new ByteArrayInputStream("m\nq\n".getBytes()), new PrintStream(outContent));
+        String input = login() + "m\n" + quit();
+        BibliotecaApp.program(new ByteArrayInputStream(input.getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -329,7 +362,7 @@ public class BibliotecaAppTest
     @Test
     public void testCheckoutMovieAndQuit()
     {
-        String expected = "Welcome!\n" +
+        String expected = getLoginAndWelcome() +
                 getMenuOptionsString() +
                 "\n" +
                 getMovieList() +
@@ -342,7 +375,8 @@ public class BibliotecaAppTest
                 "\n" +
                 "Quit!\n";
 
-        BibliotecaApp.program(new ByteArrayInputStream("k\n1\nq\n".getBytes()), new PrintStream(outContent));
+        String input = login() + "k\n1\n" + quit();
+        BibliotecaApp.program(new ByteArrayInputStream(input.getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -350,7 +384,7 @@ public class BibliotecaAppTest
     @Test
     public void testCheckoutMovieAndListMovies()
     {
-        String expected = "Welcome!\n" +
+        String expected = getLoginAndWelcome() +
                 getMenuOptionsString() +
                 "\n" +
                 getMovieList() +
@@ -373,7 +407,10 @@ public class BibliotecaAppTest
                 "\n" +
                 "Quit!\n";
 
-        BibliotecaApp.program(new ByteArrayInputStream("k\n2\nm\nq\n".getBytes()), new PrintStream(outContent));
+        String input = login() + "k\n" +
+                "2\n" +
+                "m\n" + quit();
+        BibliotecaApp.program(new ByteArrayInputStream(input.getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -381,7 +418,7 @@ public class BibliotecaAppTest
     @Test
     public void testFailedCheckoutMovie()
     {
-        String expected = "Welcome!\n" +
+        String expected = getLoginAndWelcome() +
                 getMenuOptionsString() +
                 "\n" +
                 getMovieList() +
@@ -394,7 +431,8 @@ public class BibliotecaAppTest
                 "\n" +
                 "Quit!\n";
 
-        BibliotecaApp.program(new ByteArrayInputStream("k\n8\nq\n".getBytes()), new PrintStream(outContent));
+        String input = login()+"k\n8\n" + quit();
+        BibliotecaApp.program(new ByteArrayInputStream(input.getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
     }
@@ -440,5 +478,23 @@ public class BibliotecaAppTest
                 "(3)Date Movie                     2006       Aaron Seltzer        2\n" +
                 "(4)Avatar                         2009       James Cameron        8\n" +
                 "(5)Iron Man                       2008       Jon Favreau          7\n";
+    }
+
+    private String login()
+    {
+        return "123-4567\nqwerty\n";
+    }
+
+    private String quit()
+    {
+        return "q\n";
+    }
+
+    private String getLoginAndWelcome()
+    {
+        return "Enter library number:\n" +
+                "Enter password:\n" +
+                "\n" +
+                "Welcome!\n";
     }
 }

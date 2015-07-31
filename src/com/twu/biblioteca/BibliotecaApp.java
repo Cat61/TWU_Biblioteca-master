@@ -18,11 +18,55 @@ public class BibliotecaApp
     {
         setStreams(inStream, outStream);
 
+        boolean success = login();
+        if(!success)
+        {
+            return;
+        }
+
+        out.println();
+
         out.println("Welcome!");
 
         library = new Library();
 
         mainLoop();
+
+    }
+
+    private static boolean login()
+    {
+        while (true)
+        {
+            out.println("Enter library number:");
+            String username = getInput();
+
+            if(username.equals("q"))
+            {
+                out.println();
+                out.println("Quit!");
+                return false;
+            }
+
+            if(!username.equals(Generate.libraryNumber()))
+            {
+                out.println("Unrecognisable library number.");
+                out.println();
+                continue;
+            }
+
+            out.println("Enter password:");
+            String password = getInput();
+
+            if(!password.equals(Generate.password()))
+            {
+                out.println("Invalid password.");
+                out.println();
+                continue;
+            }
+
+            return true;
+        }
     }
 
     private static void setStreams(InputStream inStream, PrintStream outStream)
