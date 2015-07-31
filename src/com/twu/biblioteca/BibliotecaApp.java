@@ -48,7 +48,7 @@ public class BibliotecaApp
                 return false;
             }
 
-            if(!username.equals(Generate.libraryNumber()))
+            if(!username.equals(Generate.user1LibraryNumber()) && !username.equals(Generate.user2LibraryNumber()))
             {
                 out.println("Unrecognisable library number.\n");
                 continue;
@@ -57,7 +57,7 @@ public class BibliotecaApp
             out.println("Enter password:");
             String password = getInput();
 
-            if(!password.equals(Generate.password()))
+            if(!password.equals(Generate.user1Password()) && !password.equals(Generate.user2Password()))
             {
                 out.println("Invalid password.\n");
                 continue;

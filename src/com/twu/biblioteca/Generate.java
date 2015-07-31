@@ -28,13 +28,23 @@ public class Generate
         return movies;
     }
 
-    public static String libraryNumber()
+    public static String user1LibraryNumber()
     {
         return "123-4567";
     }
 
-    public static String password()
+    public static String user1Password()
     {
         return "qwerty";
+    }
+
+    public static String user2LibraryNumber()
+    {
+        return "141-6211";
+    }
+
+    public static String user2Password()
+    {
+        return "P@ssword";
     }
 }
