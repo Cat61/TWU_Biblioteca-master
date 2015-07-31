@@ -44,14 +44,13 @@ public class BibliotecaApp
             if(username.equals("q"))
             {
                 out.println();
-                out.println("Quit!");
+                quit();
                 return false;
             }
 
             if(!username.equals(Generate.libraryNumber()))
             {
-                out.println("Unrecognisable library number.");
-                out.println();
+                out.println("Unrecognisable library number.\n");
                 continue;
             }
 
@@ -60,8 +59,7 @@ public class BibliotecaApp
 
             if(!password.equals(Generate.password()))
             {
-                out.println("Invalid password.");
-                out.println();
+                out.println("Invalid password.\n");
                 continue;
             }
 
@@ -143,7 +141,7 @@ public class BibliotecaApp
                 checkoutOption(Library.Item.movie);
                 break;
             case 'q':
-                out.println("Quit!");
+                quit();
                 return false;
             default:
                 out.println("Select a valid option!");
@@ -206,4 +204,8 @@ public class BibliotecaApp
         }
     }
 
+    private static void quit()
+    {
+        out.println("Quit!");
+    }
 }
