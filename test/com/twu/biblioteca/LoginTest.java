@@ -91,6 +91,22 @@ public class LoginTest
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void testSuccessfulLoginWithSecondUser()
+    {
+        String expected = "Enter library number:\n" +
+                "Enter password:\n" +
+                "\n" +
+                "Welcome!\n" +
+                getMenuOptionsString() +
+                "\n" +
+                "Quit!\n";
+
+        BibliotecaApp.program(new ByteArrayInputStream(("141-6211\nP@ssword\nq\n").getBytes()), new PrintStream(outContent));
+        String actual = getTerminalOutput();
+        assertEquals(expected, actual);
+    }
+
     private String getTerminalOutput()
     {
         String text = outContent.toString();
