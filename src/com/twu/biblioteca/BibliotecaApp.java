@@ -18,6 +18,8 @@ public class BibliotecaApp
     {
         setStreams(inStream, outStream);
 
+        library = new Library();
+
         boolean success = login();
         if(!success)
         {
@@ -27,8 +29,6 @@ public class BibliotecaApp
         out.println();
 
         out.println("Welcome!");
-
-        library = new Library();
 
         mainLoop();
 
@@ -48,7 +48,7 @@ public class BibliotecaApp
                 return false;
             }
 
-            if(!username.equals(Generate.user1LibraryNumber()) && !username.equals(Generate.user2LibraryNumber()))
+            if(!library.users.containsKey(username))
             {
                 out.println("Unrecognisable library number.\n");
                 continue;
@@ -57,7 +57,7 @@ public class BibliotecaApp
             out.println("Enter password:");
             String password = getInput();
 
-            if(!password.equals(Generate.user1Password()) && !password.equals(Generate.user2Password()))
+            if(!library.users.containsValue(password))
             {
                 out.println("Invalid password.\n");
                 continue;

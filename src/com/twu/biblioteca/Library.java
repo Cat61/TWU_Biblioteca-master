@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Library
 {
@@ -11,6 +12,8 @@ public class Library
     private List<Movie> movies;
     private List<Movie> availableMovies;
 
+    public final Map<String, String> users;
+
     public Library()
     {
         books = Generate.listOfBooks();
@@ -18,6 +21,8 @@ public class Library
 
         movies = Generate.listOfMovies();
         availableMovies = new ArrayList<Movie>(movies);
+
+        users = Generate.users();
     }
 
     public enum Item {book, movie}

@@ -1,7 +1,9 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Generate
 {
@@ -28,23 +30,11 @@ public class Generate
         return movies;
     }
 
-    public static String user1LibraryNumber()
+    public static Map<String, String> users()
     {
-        return "123-4567";
-    }
-
-    public static String user1Password()
-    {
-        return "qwerty";
-    }
-
-    public static String user2LibraryNumber()
-    {
-        return "141-6211";
-    }
-
-    public static String user2Password()
-    {
-        return "P@ssword";
+        Map<String, String> users = new HashMap<String, String>();
+        users.put("123-4567", "qwerty");
+        users.put("141-6211", "P@ssword");
+        return users;
     }
 }
