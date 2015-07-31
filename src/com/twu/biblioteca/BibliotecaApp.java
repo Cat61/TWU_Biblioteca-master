@@ -110,6 +110,7 @@ public class BibliotecaApp
                 "\tReturn Book: enter \"r\"\n" +
                 "\tList Movies: enter \"m\"\n" +
                 "\tCheckout Movie: enter \"k\"\n" +
+                "\tUser details: enter \"u\"\n" +
                 "\tQuit: enter \"q\"");
     }
 
@@ -141,6 +142,12 @@ public class BibliotecaApp
                 break;
             case 'k':
                 checkoutOption(Library.Item.movie);
+                break;
+            case 'u':
+                out.println("User details:\n" +
+                        "John Smith\n" +
+                        "email: john.smith@gmail.com\n" +
+                        "tel: 0207 123 4567\n");
                 break;
             case 'q':
                 quit();
