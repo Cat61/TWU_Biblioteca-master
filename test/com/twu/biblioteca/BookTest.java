@@ -41,14 +41,6 @@ public class BookTest
     }
 
     @Test
-    public void testToString()
-    {
-        String expected = "Effective Java                 2001       Joshua Bloch";
-        String actual = book.toString();
-        assertEquals(expected, actual);
-    }
-
-    @Test
     public void testEqualsTitle()
     {
         assertTrue(book.equalsTitle("Effective Java"));
@@ -56,5 +48,13 @@ public class BookTest
         assertFalse(book.equalsTitle("liwug"));
 
         assertFalse(book.equalsTitle("effective Java"));
+    }
+
+    @Test
+    public void testToString()
+    {
+        String expected = "Effective Java                 2001       Joshua Bloch";
+        String actual = book.toString();
+        assertEquals(expected, actual);
     }
 }

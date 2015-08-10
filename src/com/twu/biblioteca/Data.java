@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Generate
+public class Data
 {
-    public static List<LibraryItem> listOfBooks()
+    public static List<LibraryItem> getListOfBooks()
     {
         List<LibraryItem> books = new ArrayList<LibraryItem>();
         books.add(new Book("Head First Java", "Kathy Sierra, Bert Bates", "2005"));
@@ -19,7 +19,7 @@ public class Generate
         return books;
     }
 
-    public static List<LibraryItem> listOfMovies()
+    public static List<LibraryItem> getListOfMovies()
     {
         List<LibraryItem> movies = new ArrayList<LibraryItem>();
         movies.add(new Movie("Casablanca", "1942", "Michael Curtiz", "9"));
@@ -30,7 +30,7 @@ public class Generate
         return movies;
     }
 
-    public static Map<String, User> users()
+    public static Map<String, User> getUsers()
     {
         Map<String, User> users = new HashMap<String, User>();
         users.put("123-4567", new User("123-4567", "qwerty", "John Smith", "john.smith@gmail.com", "0207 123 4567"));
@@ -38,4 +38,3 @@ public class Generate
         return users;
     }
 }
-

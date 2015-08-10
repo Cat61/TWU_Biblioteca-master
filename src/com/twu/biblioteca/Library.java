@@ -11,10 +11,10 @@ public class Library
 
     public Library()
     {
-        media = Generate.listOfBooks();
-        media.addAll(Generate.listOfMovies());
+        media = Data.getListOfBooks();
+        media.addAll(Data.getListOfMovies());
 
-        users = Generate.users();
+        users = Data.getUsers();
     }
 
     public boolean checkoutItem(String name, Class<? extends LibraryItem> type)
