@@ -17,7 +17,7 @@ public class Library
         users = Generate.users();
     }
 
-    public boolean checkoutItem(String name, Class<?> type)
+    public boolean checkoutItem(String name, Class<? extends LibraryItem> type)
     {
         LibraryItem item = getLibraryItem(media, type, name);
 
@@ -30,7 +30,7 @@ public class Library
         return true;
     }
 
-    public boolean returnItem(String title, Class<?> type)
+    public boolean returnItem(String title, Class<? extends LibraryItem> type)
     {
         LibraryItem item = getLibraryItem(media, type, title);
         if (item == null || item.isAvailable())
@@ -42,13 +42,13 @@ public class Library
         return true;
     }
 
-    public boolean isItemAvailable(String title, Class<?> type)
+    public boolean isItemAvailable(String title, Class<? extends LibraryItem> type)
     {
         LibraryItem item = getLibraryItem(media, type, title);
         return item == null || item.isAvailable();
     }
 
-    public String printList(Class<?> type)
+    public String printList(Class<? extends LibraryItem> type)
     {
         String str = "";
 
@@ -74,7 +74,7 @@ public class Library
         return str;
     }
 
-    private static LibraryItem getLibraryItem(List<LibraryItem> list, Class<?> type, String name)
+    private static LibraryItem getLibraryItem(List<LibraryItem> list, Class<? extends LibraryItem> type, String name)
     {
         for (LibraryItem item : list)
         {

@@ -163,7 +163,7 @@ public class BibliotecaApp
         return true;
     }
 
-    private static void checkoutOption(Class<?> type)
+    private static void checkoutOption(Class<? extends LibraryItem> type)
     {
         out.println(library.printList(type));
 
@@ -187,7 +187,7 @@ public class BibliotecaApp
         }
     }
 
-    private static void returnOption(Class<?> type)
+    private static void returnOption(Class<? extends LibraryItem> type)
     {
         out.println("Enter title of the " + type.getSimpleName() + " you are returning:");
 
