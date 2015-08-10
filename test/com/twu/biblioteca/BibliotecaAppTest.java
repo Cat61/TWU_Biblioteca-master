@@ -15,12 +15,12 @@ public class BibliotecaAppTest
     @Test
     public void testListBooksAndQuit()
     {
-        String expected = getLoginAndWelcome() +
-                getMenuOptionsString() +
+        String expected = loginAndWelcome() +
+                menuOptionsString() +
+                "\n" + 
+                bookList() +
                 "\n" +
-                getBookList() +
-                "\n" +
-                getMenuOptionsString() +
+                menuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
@@ -33,21 +33,22 @@ public class BibliotecaAppTest
     @Test
     public void testCheckoutBookAndQuit()
     {
-        String expected = getLoginAndWelcome() +
-                getMenuOptionsString() +
+        String expected = loginAndWelcome() +
+                menuOptionsString() +
                 "\n" +
-                getBookList() +
+                bookList() +
                 "\n" +
-                "Select book to checkout: enter index\n" +
+                "Select Book to checkout: enter title\n" +
                 "\n" +
-                "Thank you! Enjoy the book.\n" +
+                "Thank you! Enjoy the Book.\n" +
                 "\n" +
-                getMenuOptionsString() +
+                menuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
-        String input = login() + "c\n" +
-                "1\n" + quit();
+        String input = login() +
+                "c\n" +
+                "Head First Java\n" + quit();
         BibliotecaApp.program(new ByteArrayInputStream(input.getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
@@ -56,16 +57,16 @@ public class BibliotecaAppTest
     @Test
     public void testCheckoutAndListBooks()
     {
-        String expected = getLoginAndWelcome() +
-                getMenuOptionsString() +
+        String expected = loginAndWelcome() +
+                menuOptionsString() +
                 "\n" +
-                getBookList() +
+                bookList() +
                 "\n" +
-                "Select book to checkout: enter index\n" +
+                "Select Book to checkout: enter title\n" +
                 "\n" +
-                "Thank you! Enjoy the book.\n" +
+                "Thank you! Enjoy the Book.\n" +
                 "\n" +
-                getMenuOptionsString() +
+                menuOptionsString() +
                 "\n" +
                 "Book List:\n" +
                 "   Title                          Year       Author\n" +
@@ -76,12 +77,12 @@ public class BibliotecaAppTest
                 "(4)Java All-in-One For Dummies    2014       Doug Lowe\n" +
                 "(5)Learning Java                  2013       Patrick Niemeyer, Daniel Leuck\n" +
                 "\n" +
-                getMenuOptionsString() +
+                menuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
         String input = login() + "c\n" +
-                "3\n" +
+                "Java: A Beginner's Guide\n" +
                 "b\n" + quit();
         BibliotecaApp.program(new ByteArrayInputStream(input.getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
@@ -91,25 +92,25 @@ public class BibliotecaAppTest
     @Test
     public void testFailedCheckoutAndListBooks()
     {
-        String expected = getLoginAndWelcome() +
-                getMenuOptionsString() +
+        String expected = loginAndWelcome() +
+                menuOptionsString() +
                 "\n" +
-                getBookList() +
+                bookList() +
                 "\n" +
-                "Select book to checkout: enter index\n" +
+                "Select Book to checkout: enter title\n" +
                 "\n" +
-                "That book is not available!\n" +
+                "That Book is not available!\n" +
                 "\n" +
-                getMenuOptionsString() +
+                menuOptionsString() +
                 "\n" +
-                getBookList() +
+                bookList() +
                 "\n" +
-                getMenuOptionsString() +
+                menuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
         String input = login() + "c\n" +
-                "8\n" +
+                "Big Java: Early Objects\n" +
                 "b\n" + quit();
         BibliotecaApp.program(new ByteArrayInputStream(input.getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
@@ -119,11 +120,11 @@ public class BibliotecaAppTest
     @Test
     public void testInvalidSelectMenuOptionWithChar()
     {
-        String expected = getLoginAndWelcome() +
-                getMenuOptionsString() +
+        String expected = loginAndWelcome() +
+                menuOptionsString() +
                 "\n" +
                 "Select a valid option!\n" +
-                getMenuOptionsString() +
+                menuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
@@ -136,11 +137,11 @@ public class BibliotecaAppTest
     @Test
     public void testInvalidSelectMenuOptionWithCorrectCharButMore()
     {
-        String expected = getLoginAndWelcome() +
-                getMenuOptionsString() +
+        String expected = loginAndWelcome() +
+                menuOptionsString() +
                 "\n" +
                 "Select a valid option!\n" +
-                getMenuOptionsString() +
+                menuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
@@ -153,11 +154,11 @@ public class BibliotecaAppTest
     @Test
     public void testInvalidSelectMenuOptionWithWord()
     {
-        String expected = getLoginAndWelcome() +
-                getMenuOptionsString() +
+        String expected = loginAndWelcome() +
+                menuOptionsString() +
                 "\n" +
                 "Select a valid option!\n" +
-                getMenuOptionsString() +
+                menuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
@@ -170,39 +171,31 @@ public class BibliotecaAppTest
     @Test
     public void testReturnFirstBookAndListBooks()
     {
-        String expected = getLoginAndWelcome() +
-                getMenuOptionsString() +
+        String expected = loginAndWelcome() +
+                menuOptionsString() +
                 "\n" +
-                getBookList() +
+                bookList() +
                 "\n" +
-                "Select book to checkout: enter index\n" +
+                "Select Book to checkout: enter title\n" +
                 "\n" +
-                "Thank you! Enjoy the book.\n" +
+                "Thank you! Enjoy the Book.\n" +
                 "\n" +
-                getMenuOptionsString() +
+                menuOptionsString() +
                 "\n" +
-                "Enter title of the book you are returning:\n" +
+                "Enter title of the Book you are returning:\n" +
                 "\n" +
-                "Thank you for returning the book.\n" +
+                "Thank you for returning the Book.\n" +
                 "\n" +
-                getMenuOptionsString() +
+                menuOptionsString() +
                 "\n" +
-                "Book List:\n" +
-                "   Title                          Year       Author\n" +
-                "-------------------------------------------------------------------------------\n" +
-                "(1)Hadoop: The Definitive Guide   2009       Tom White\n" +
-                "(2)Java: A Beginner's Guide       2011       Herbert Schildt\n" +
-                "(3)Effective Java                 2001       Joshua Bloch\n" +
-                "(4)Java All-in-One For Dummies    2014       Doug Lowe\n" +
-                "(5)Learning Java                  2013       Patrick Niemeyer, Daniel Leuck\n" +
-                "(6)Head First Java                2005       Kathy Sierra, Bert Bates\n" +
+                bookList() +
                 "\n" +
-                getMenuOptionsString() +
+                menuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
         String input = login() + "c\n" +
-                "1\n" +
+                "Head First Java\n" +
                 "r\n" +
                 "Head First Java\n" +
                 "b\n" + quit();
@@ -214,39 +207,31 @@ public class BibliotecaAppTest
     @Test
     public void testReturnAvailableBookAndListBooks()
     {
-        String expected = getLoginAndWelcome() +
-                getMenuOptionsString() +
+        String expected = loginAndWelcome() +
+                menuOptionsString() +
                 "\n" +
-                getBookList() +
+                bookList() +
                 "\n" +
-                "Select book to checkout: enter index\n" +
+                "Select Book to checkout: enter title\n" +
                 "\n" +
-                "Thank you! Enjoy the book.\n" +
+                "Thank you! Enjoy the Book.\n" +
                 "\n" +
-                getMenuOptionsString() +
+                menuOptionsString() +
                 "\n" +
-                "Enter title of the book you are returning:\n" +
+                "Enter title of the Book you are returning:\n" +
                 "\n" +
-                "Thank you for returning the book.\n" +
+                "Thank you for returning the Book.\n" +
                 "\n" +
-                getMenuOptionsString() +
+                menuOptionsString() +
                 "\n" +
-                "Book List:\n" +
-                "   Title                          Year       Author\n" +
-                "-------------------------------------------------------------------------------\n" +
-                "(1)Head First Java                2005       Kathy Sierra, Bert Bates\n" +
-                "(2)Hadoop: The Definitive Guide   2009       Tom White\n" +
-                "(3)Java: A Beginner's Guide       2011       Herbert Schildt\n" +
-                "(4)Effective Java                 2001       Joshua Bloch\n" +
-                "(5)Learning Java                  2013       Patrick Niemeyer, Daniel Leuck\n" +
-                "(6)Java All-in-One For Dummies    2014       Doug Lowe\n" +
+                bookList() +
                 "\n" +
-                getMenuOptionsString() +
+                menuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
         String input = login() + "c\n" +
-                "5\n" +
+                "Java All-in-One For Dummies\n" +
                 "r\n" +
                 "Java All-in-One For Dummies\n" +
                 "b\n" + quit();
@@ -258,22 +243,22 @@ public class BibliotecaAppTest
     @Test
     public void testMisspeltReturnAndListBooks()
     {
-        String expected = getLoginAndWelcome() +
-                getMenuOptionsString() +
+        String expected = loginAndWelcome() +
+                menuOptionsString() +
                 "\n" +
-                getBookList() +
+                bookList() +
                 "\n" +
-                "Select book to checkout: enter index\n" +
+                "Select Book to checkout: enter title\n" +
                 "\n" +
-                "Thank you! Enjoy the book.\n" +
+                "Thank you! Enjoy the Book.\n" +
                 "\n" +
-                getMenuOptionsString() +
+                menuOptionsString() +
                 "\n" +
-                "Enter title of the book you are returning:\n" +
+                "Enter title of the Book you are returning:\n" +
                 "\n" +
-                "That is not a valid book to return.\n" +
+                "That is not a valid Book to return.\n" +
                 "\n" +
-                getMenuOptionsString() +
+                menuOptionsString() +
                 "\n" +
                 "Book List:\n" +
                 "   Title                          Year       Author\n" +
@@ -284,12 +269,12 @@ public class BibliotecaAppTest
                 "(4)Effective Java                 2001       Joshua Bloch\n" +
                 "(5)Learning Java                  2013       Patrick Niemeyer, Daniel Leuck\n" +
                 "\n" +
-                getMenuOptionsString() +
+                menuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
         String input = login() + "c\n" +
-                "5\n" +
+                "Java All-in-One For Dummies\n" +
                 "r\n" +
                 "Java All-in-One For Dummie\n" +
                 "b\n" + quit();
@@ -301,22 +286,22 @@ public class BibliotecaAppTest
     @Test
     public void testInvalidReturnAndListBooks()
     {
-        String expected = getLoginAndWelcome() +
-                getMenuOptionsString() +
+        String expected = loginAndWelcome() +
+                menuOptionsString() +
                 "\n" +
-                getBookList() +
+                bookList() +
                 "\n" +
-                "Select book to checkout: enter index\n" +
+                "Select Book to checkout: enter title\n" +
                 "\n" +
-                "Thank you! Enjoy the book.\n" +
+                "Thank you! Enjoy the Book.\n" +
                 "\n" +
-                getMenuOptionsString() +
+                menuOptionsString() +
                 "\n" +
-                "Enter title of the book you are returning:\n" +
+                "Enter title of the Book you are returning:\n" +
                 "\n" +
-                "That is not a valid book to return.\n" +
+                "That is not a valid Book to return.\n" +
                 "\n" +
-                getMenuOptionsString() +
+                menuOptionsString() +
                 "\n" +
                 "Book List:\n" +
                 "   Title                          Year       Author\n" +
@@ -327,12 +312,12 @@ public class BibliotecaAppTest
                 "(4)Effective Java                 2001       Joshua Bloch\n" +
                 "(5)Learning Java                  2013       Patrick Niemeyer, Daniel Leuck\n" +
                 "\n" +
-                getMenuOptionsString() +
+                menuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
         String input = login() + "c\n" +
-                "5\n" +
+                "Java All-in-One For Dummies\n" +
                 "r\n" +
                 "&\n" +
                 "b\n" + quit();
@@ -344,12 +329,12 @@ public class BibliotecaAppTest
     @Test
     public void testListMovies()
     {
-        String expected = getLoginAndWelcome() +
-                getMenuOptionsString() +
+        String expected = loginAndWelcome() +
+                menuOptionsString() +
                 "\n" +
-                getMovieList() +
+                movieList() +
                 "\n" +
-                getMenuOptionsString() +
+                menuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
@@ -362,20 +347,20 @@ public class BibliotecaAppTest
     @Test
     public void testCheckoutMovieAndQuit()
     {
-        String expected = getLoginAndWelcome() +
-                getMenuOptionsString() +
+        String expected = loginAndWelcome() +
+                menuOptionsString() +
                 "\n" +
-                getMovieList() +
+                movieList() +
                 "\n" +
-                "Select movie to checkout: enter index\n" +
+                "Select Movie to checkout: enter title\n" +
                 "\n" +
-                "Thank you! Enjoy the movie.\n" +
+                "Thank you! Enjoy the Movie.\n" +
                 "\n" +
-                getMenuOptionsString() +
+                menuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
-        String input = login() + "k\n1\n" + quit();
+        String input = login() + "k\nCasablanca\n" + quit();
         BibliotecaApp.program(new ByteArrayInputStream(input.getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
         assertEquals(expected, actual);
@@ -384,16 +369,16 @@ public class BibliotecaAppTest
     @Test
     public void testCheckoutMovieAndListMovies()
     {
-        String expected = getLoginAndWelcome() +
-                getMenuOptionsString() +
+        String expected = loginAndWelcome() +
+                menuOptionsString() +
                 "\n" +
-                getMovieList() +
+                movieList() +
                 "\n" +
-                "Select movie to checkout: enter index\n" +
+                "Select Movie to checkout: enter title\n" +
                 "\n" +
-                "Thank you! Enjoy the movie.\n" +
+                "Thank you! Enjoy the Movie.\n" +
                 "\n" +
-                getMenuOptionsString() +
+                menuOptionsString() +
                 "\n" +
                 "Movie List:\n" +
                 "   Title                          Year       Director             Rating\n" +
@@ -403,12 +388,12 @@ public class BibliotecaAppTest
                 "(3)Avatar                         2009       James Cameron        8\n" +
                 "(4)Iron Man                       2008       Jon Favreau          7\n" +
                 "\n" +
-                getMenuOptionsString() +
+                menuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
         String input = login() + "k\n" +
-                "2\n" +
+                "The Godfather\n" +
                 "m\n" + quit();
         BibliotecaApp.program(new ByteArrayInputStream(input.getBytes()), new PrintStream(outContent));
         String actual = getTerminalOutput();
@@ -418,16 +403,16 @@ public class BibliotecaAppTest
     @Test
     public void testFailedCheckoutMovie()
     {
-        String expected = getLoginAndWelcome() +
-                getMenuOptionsString() +
+        String expected = loginAndWelcome() +
+                menuOptionsString() +
                 "\n" +
-                getMovieList() +
+                movieList() +
                 "\n" +
-                "Select movie to checkout: enter index\n" +
+                "Select Movie to checkout: enter title\n" +
                 "\n" +
-                "That movie is not available!\n" +
+                "That Movie is not available!\n" +
                 "\n" +
-                getMenuOptionsString() +
+                menuOptionsString() +
                 "\n" +
                 "Quit!\n";
 
@@ -444,7 +429,7 @@ public class BibliotecaAppTest
         return text;
     }
 
-    private String getMenuOptionsString()
+    private String menuOptionsString()
     {
         return "Menu Options:\n" +
                 "\tList Books: enter \"b\"\n" +
@@ -456,20 +441,7 @@ public class BibliotecaAppTest
                 "\tQuit: enter \"q\"\n";
     }
 
-    private String getBookList()
-    {
-        return "Book List:\n" +
-                "   Title                          Year       Author\n" +
-                "-------------------------------------------------------------------------------\n" +
-                "(1)Head First Java                2005       Kathy Sierra, Bert Bates\n" +
-                "(2)Hadoop: The Definitive Guide   2009       Tom White\n" +
-                "(3)Java: A Beginner's Guide       2011       Herbert Schildt\n" +
-                "(4)Effective Java                 2001       Joshua Bloch\n" +
-                "(5)Java All-in-One For Dummies    2014       Doug Lowe\n" +
-                "(6)Learning Java                  2013       Patrick Niemeyer, Daniel Leuck\n";
-    }
-
-    private String getMovieList()
+    private String movieList()
     {
         return "Movie List:\n" +
                 "   Title                          Year       Director             Rating\n" +
@@ -491,11 +463,24 @@ public class BibliotecaAppTest
         return "q\n";
     }
 
-    private String getLoginAndWelcome()
+    private String loginAndWelcome()
     {
         return "Enter library number:\n" +
                 "Enter password:\n" +
                 "\n" +
                 "Welcome!\n";
+    }
+
+    private String bookList()
+    {
+        return "Book List:\n" +
+                "   Title                          Year       Author\n" +
+                "-------------------------------------------------------------------------------\n" +
+                "(1)Head First Java                2005       Kathy Sierra, Bert Bates\n" +
+                "(2)Hadoop: The Definitive Guide   2009       Tom White\n" +
+                "(3)Java: A Beginner's Guide       2011       Herbert Schildt\n" +
+                "(4)Effective Java                 2001       Joshua Bloch\n" +
+                "(5)Java All-in-One For Dummies    2014       Doug Lowe\n" +
+                "(6)Learning Java                  2013       Patrick Niemeyer, Daniel Leuck\n";
     }
 }

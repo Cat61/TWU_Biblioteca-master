@@ -7,9 +7,9 @@ import java.util.Map;
 
 public class Generate
 {
-    public static List<Book> listOfBooks()
+    public static List<LibraryItem> listOfBooks()
     {
-        List<Book> books = new ArrayList<Book>();
+        List<LibraryItem> books = new ArrayList<LibraryItem>();
         books.add(new Book("Head First Java", "Kathy Sierra, Bert Bates", "2005"));
         books.add(new Book("Hadoop: The Definitive Guide", "Tom White", "2009"));
         books.add(new Book("Java: A Beginner's Guide", "Herbert Schildt", "2011"));
@@ -19,9 +19,9 @@ public class Generate
         return books;
     }
 
-    public static List<Movie> listOfMovies()
+    public static List<LibraryItem> listOfMovies()
     {
-        List<Movie> movies = new ArrayList<Movie>();
+        List<LibraryItem> movies = new ArrayList<LibraryItem>();
         movies.add(new Movie("Casablanca", "1942", "Michael Curtiz", "9"));
         movies.add(new Movie("The Godfather", "1972", "Francis Coppola", "9"));
         movies.add(new Movie("Date Movie", "2006", "Aaron Seltzer", "2"));

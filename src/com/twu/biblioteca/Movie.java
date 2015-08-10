@@ -12,6 +12,13 @@ public class Movie extends LibraryItem
         rating = ratingArg;
     }
 
+    public static String getHeader()
+    {
+        return  "Movie List:\n"
+                + String.format("   %-30s %-10s %-20s %s", "Title", "Year", "Director", "Rating") + "\n"
+                + "------------------------------------------------------------------------\n";
+    }
+
     @Override
     public String toString()
     {

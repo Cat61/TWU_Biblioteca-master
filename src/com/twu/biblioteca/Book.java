@@ -10,6 +10,13 @@ public class Book extends LibraryItem
         author = authorArg;
     }
 
+    public static String getHeader()
+    {
+        return "Book List:\n"
+                + String.format("   %-30s %-10s %s", "Title", "Year", "Author") + "\n"
+                + "-------------------------------------------------------------------------------\n";
+    }
+
     @Override
     public String toString()
     {

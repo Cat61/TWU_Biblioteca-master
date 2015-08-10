@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-public class LibraryItem
+public abstract class LibraryItem
 {
     private final String title;
     private final String year;

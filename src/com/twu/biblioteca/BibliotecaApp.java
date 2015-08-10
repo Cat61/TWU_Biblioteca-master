@@ -43,6 +43,11 @@ public class BibliotecaApp
             out.println("Enter library number:");
             String username = getInput();
 
+            if(username == null)
+            {
+                continue;
+            }
+
             if(username.equals("q"))
             {
                 out.println();
@@ -126,24 +131,24 @@ public class BibliotecaApp
             return true;
         }
 
-        char c = input.charAt(0);
+        char option = input.charAt(0);
 
-        switch (c)
+        switch (option)
         {
             case 'b':
-                out.println(library.printTypeList(Library.Item.book));
+                out.println(library.printList(Book.class));
                 break;
             case 'c':
-                checkoutOption(Library.Item.book);
+                checkoutOption(Book.class);
                 break;
             case 'r':
-                returnBookOption();
+                returnOption(Book.class);
                 break;
             case 'm':
-                out.println(library.printTypeList(Library.Item.movie));
+                out.println(library.printList(Movie.class));
                 break;
             case 'k':
-                checkoutOption(Library.Item.movie);
+                checkoutOption(Movie.class);
                 break;
             case 'u':
                 out.println("User details:\n" + user.details());
@@ -158,57 +163,47 @@ public class BibliotecaApp
         return true;
     }
 
-    private static void checkoutOption(Library.Item type)
+    private static void checkoutOption(Class<?> type)
     {
-        out.println(library.printTypeList(type));
+        out.println(library.printList(type));
 
-        out.println("Select " + type + " to checkout: enter index");
+        String typeName = type.getSimpleName();
+
+        out.println("Select " + typeName + " to checkout: enter title");
 
         String input = getInput();
 
         out.println();
 
-        int index;
-
-        try
-        {
-            index = Integer.parseInt(input);
-        }
-        catch (NumberFormatException ex)
-        {
-            out.println("Not a valid index of a " + type + "!\n");
-            return;
-        }
-
-        boolean success = library.checkout(type, index - 1);
+        boolean success = library.checkoutItem(input, type);
 
         if (success)
         {
-            out.println("Thank you! Enjoy the " + type + ".\n");
+            out.println("Thank you! Enjoy the " + typeName + ".\n");
         }
         else
         {
-            out.println("That " + type + " is not available!\n");
+            out.println("That " + typeName + " is not available!\n");
         }
     }
 
-    private static void returnBookOption()
+    private static void returnOption(Class<?> type)
     {
-        out.println("Enter title of the book you are returning:");
+        out.println("Enter title of the " + type.getSimpleName() + " you are returning:");
 
         String input = getInput();
 
         out.println();
 
-        boolean success = library.returnBook(input);
+        boolean success = library.returnItem(input, type);
 
         if(success)
         {
-            out.println("Thank you for returning the book.\n");
+            out.println("Thank you for returning the " + type.getSimpleName() + ".\n");
         }
         else
         {
-            out.println("That is not a valid book to return.\n");
+            out.println("That is not a valid " + type.getSimpleName() + " to return.\n");
         }
     }
 
